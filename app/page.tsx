@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const pillars = [
   {
@@ -35,9 +36,15 @@ export default function Home() {
           <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-[#00e5ff] opacity-[0.03] blur-3xl" />
         </div>
 
-        {/* Logo placeholder */}
-        <div className="mb-8 w-16 h-16 rounded-full border border-[#00e5ff]/30 flex items-center justify-center text-[#00e5ff] text-2xl">
-          ✦
+        {/* Logo */}
+        <div className="mb-8">
+          <Image
+            src="/logo.png"
+            alt="Finding Luca"
+            width={80}
+            height={80}
+            className="rounded-full object-cover ring-1 ring-[#00e5ff]/20"
+          />
         </div>
 
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-6">

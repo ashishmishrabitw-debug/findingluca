@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -20,9 +21,18 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-white font-bold text-lg tracking-tight hover:text-[#00e5ff] transition-colors"
+          className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
         >
-          Finding Luca
+          <Image
+            src="/logo.png"
+            alt="Finding Luca"
+            width={32}
+            height={32}
+            className="rounded-full object-cover"
+          />
+          <span className="text-white font-bold text-lg tracking-tight">
+            Finding Luca
+          </span>
         </Link>
 
         {/* Desktop links */}
