@@ -4,30 +4,30 @@ import { TextScramble } from "@/components/ui/text-scramble";
 import NewsCarousel from "@/components/NewsCarousel";
 import { getAllPosts } from "@/lib/posts";
 
-
-const pillars = [
+const pillarsWithImages = [
   {
     icon: "◈",
     title: "Robotics",
-    description:
-      "Surgical robotics, rehabilitation devices, and autonomous systems that extend what clinicians can do and bring precision medicine everywhere.",
+    description: "Surgical robotics, rehabilitation devices, and autonomous systems that extend what clinicians can do and bring precision medicine everywhere.",
     status: "Active",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
   },
   {
     icon: "◎",
     title: "Genomics",
-    description:
-      "Reading the genome to understand disease, design tailored therapies, and bring precision medicine to every individual.",
+    description: "Reading the genome to understand disease, design tailored therapies, and bring precision medicine to every individual.",
     status: "Active",
+    image: "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=800&q=80",
   },
   {
     icon: "◉",
     title: "Nutrition Medicine",
-    description:
-      "Exploring diet, micronutrients, and the gut microbiome as powerful levers in preventing and treating disease.",
+    description: "Exploring diet, micronutrients, and the gut microbiome as powerful levers in preventing and treating disease.",
     status: "Active",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80",
   },
 ];
+
 
 export default function Home() {
   const allPosts = getAllPosts();
@@ -85,38 +85,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Research pillars */}
+      {/* Frontiers pillars with images */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-          What We&apos;re Working On
+          Frontiers
         </p>
         <h2 className="text-3xl md:text-4xl font-bold mb-16 max-w-xl">
           Three pillars driving our work
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {pillars.map((pillar) => (
-            <div
+          {pillarsWithImages.map((pillar) => (
+            <Link
               key={pillar.title}
-              className="border border-[#1e1e1e] rounded-2xl p-8 bg-[#111] hover:border-[#00e5ff]/30 transition-colors group"
+              href="/frontiers"
+              className="group relative rounded-2xl overflow-hidden border border-[#1e1e1e] hover:border-[#00e5ff]/30 transition-colors block"
             >
-              <div className="text-3xl text-[#00e5ff] mb-6">{pillar.icon}</div>
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="font-semibold text-lg">{pillar.title}</h3>
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    pillar.status === "Active"
-                      ? "bg-[#00e5ff]/10 text-[#00e5ff]"
-                      : "bg-white/5 text-[#a0a0a0]"
-                  }`}
-                >
-                  {pillar.status}
-                </span>
+              {/* Background image */}
+              <div className="relative h-48 w-full">
+                <Image
+                  src={pillar.image}
+                  alt={pillar.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-[#0a0a0a]/60" />
               </div>
-              <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                {pillar.description}
-              </p>
-            </div>
+              {/* Text */}
+              <div className="bg-[#111] p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="font-semibold text-lg">{pillar.title}</h3>
+                  <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-[#00e5ff]/10 text-[#00e5ff]">
+                    {pillar.status}
+                  </span>
+                </div>
+                <p className="text-[#a0a0a0] text-sm leading-relaxed">
+                  {pillar.description}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -127,6 +134,25 @@ export default function Home() {
           >
             See all frontiers →
           </Link>
+        </div>
+      </section>
+
+      {/* Full-width photo break */}
+      <section className="relative w-full h-[60vh] overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&q=80"
+          alt="Research laboratory"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0a0a0a]/60" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+          <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
+            Finding Luca S&amp;RL
+          </p>
+          <h2 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">
+            Science done with curiosity and urgency
+          </h2>
         </div>
       </section>
 
