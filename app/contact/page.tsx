@@ -25,10 +25,10 @@ export default function ContactPage() {
               collaboration idea, or just a hello — we read everything.
             </p>
             <a
-              href="mailto:hello@findingluca.com"
+              href="mailto:ashishmishrabitw@gmail.com"
               className="text-[#00e5ff] text-sm font-medium hover:underline"
             >
-              hello@findingluca.com
+              ashishmishrabitw@gmail.com
             </a>
           </div>
 

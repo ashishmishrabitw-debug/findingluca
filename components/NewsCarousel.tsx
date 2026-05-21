@@ -86,7 +86,7 @@ export default function NewsCarousel({ posts }: Props) {
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <Link
-              href={`/news/${post.slug}`}
+              href={`/${post.type}/${post.slug}`}
               className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] transition-colors text-sm"
             >
               Read More →

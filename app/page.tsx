@@ -2,39 +2,40 @@ import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
 import NewsCarousel from "@/components/NewsCarousel";
-import { getNewsPosts } from "@/lib/posts";
+import { getAllPosts } from "@/lib/posts";
+
 
 const pillars = [
   {
     icon: "◈",
-    title: "Precision Diagnostics",
+    title: "Robotics",
     description:
-      "Developing tools that detect disease earlier and more accurately than current methods, giving patients a real fighting chance.",
+      "Surgical robotics, rehabilitation devices, and autonomous systems that extend what clinicians can do and bring precision medicine everywhere.",
     status: "Active",
   },
   {
     icon: "◎",
-    title: "Regenerative Medicine",
+    title: "Genomics",
     description:
-      "Exploring how the body can be guided to repair itself — from cellular therapies to engineered tissue.",
+      "Reading the genome to understand disease, design tailored therapies, and bring precision medicine to every individual.",
     status: "Active",
   },
   {
     icon: "◉",
-    title: "AI-Driven Drug Discovery",
+    title: "Nutrition Medicine",
     description:
-      "Using machine learning to find patterns in biological data that would take humans decades to uncover on their own.",
-    status: "Incoming",
+      "Exploring diet, micronutrients, and the gut microbiome as powerful levers in preventing and treating disease.",
+    status: "Active",
   },
 ];
 
 export default function Home() {
-  const newsPosts = getNewsPosts();
+  const allPosts = getAllPosts();
 
   return (
     <div className="pt-16">
       {/* Full-screen news carousel — first thing you see */}
-      <NewsCarousel posts={newsPosts} />
+      <NewsCarousel posts={allPosts} />
 
       {/* Lab identity section */}
       <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 overflow-hidden">
@@ -70,10 +71,10 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href="/research"
+            href="/frontiers"
             className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] transition-colors text-sm"
           >
-            Our Research →
+            Our Frontiers →
           </Link>
           <Link
             href="/contact"
@@ -121,10 +122,10 @@ export default function Home() {
 
         <div className="mt-10">
           <Link
-            href="/research"
+            href="/frontiers"
             className="text-sm text-[#a0a0a0] hover:text-[#00e5ff] transition-colors"
           >
-            See all research areas →
+            See all frontiers →
           </Link>
         </div>
       </section>
