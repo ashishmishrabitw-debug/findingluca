@@ -27,7 +27,7 @@ export default function NewsCarousel({ posts }: Props) {
         setCurrent((prev) => (prev + 1) % posts.length)
         setVisible(true)
       }, 500)
-    }, 6000)
+    }, 12000)
     return () => clearInterval(interval)
   }, [posts.length])
 
@@ -51,7 +51,7 @@ export default function NewsCarousel({ posts }: Props) {
         <div
           key={`${current}-progress`}
           className="h-full bg-[#00e5ff]"
-          style={{ animation: "progress 6s linear forwards" }}
+          style={{ animation: "progress 12s linear forwards" }}
         />
       </div>
 
