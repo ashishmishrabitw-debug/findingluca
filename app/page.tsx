@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 const pillars = [
   {
@@ -47,9 +48,7 @@ export default function Home() {
           />
         </div>
 
-        <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-6">
-          Finding Luca Research Laboratory
-        </p>
+        <TextScramble text="Finding Luca Research Laboratory" className="text-[#00e5ff] mb-6" />
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
           Building the{" "}
