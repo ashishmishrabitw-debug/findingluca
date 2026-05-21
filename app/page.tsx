@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
+import NewsCarousel from "@/components/NewsCarousel";
+import { getNewsPosts } from "@/lib/posts";
 
 const pillars = [
   {
@@ -27,6 +29,7 @@ const pillars = [
 ];
 
 export default function Home() {
+  const newsPosts = getNewsPosts();
   return (
     <div className="pt-16">
       {/* Hero */}
@@ -145,59 +148,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest from blog */}
+      {/* News carousel */}
       <section className="max-w-6xl mx-auto px-6 py-24">
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-              From the Lab
+              Latest News
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold">Latest Writing</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">From the Lab</h2>
           </div>
           <Link
-            href="/blog"
+            href="/news"
             className="text-sm text-[#a0a0a0] hover:text-[#00e5ff] transition-colors hidden sm:block"
           >
-            All posts →
+            All news →
           </Link>
         </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <Link
-            href="/blog"
-            className="group border border-[#1e1e1e] rounded-2xl p-8 bg-[#111] hover:border-[#00e5ff]/30 transition-colors block"
-          >
-            <span className="text-xs text-[#00e5ff] font-medium tracking-widest uppercase">
-              Essay
-            </span>
-            <h3 className="text-xl font-semibold mt-3 mb-3 group-hover:text-[#00e5ff] transition-colors">
-              Why I Started Finding Luca
-            </h3>
-            <p className="text-[#a0a0a0] text-sm leading-relaxed">
-              Medicine has always been the intersection of science and humanity.
-              Here&apos;s why I believe the next decade will define the next
-              century of health.
-            </p>
-            <p className="text-[#333] text-xs mt-6">Coming soon</p>
-          </Link>
-
-          <Link
-            href="/news"
-            className="group border border-[#1e1e1e] rounded-2xl p-8 bg-[#111] hover:border-[#00e5ff]/30 transition-colors block"
-          >
-            <span className="text-xs text-[#00e5ff] font-medium tracking-widest uppercase">
-              News
-            </span>
-            <h3 className="text-xl font-semibold mt-3 mb-3 group-hover:text-[#00e5ff] transition-colors">
-              Lab Updates & Medical News
-            </h3>
-            <p className="text-[#a0a0a0] text-sm leading-relaxed">
-              Follow along as we track breakthroughs, publish findings, and
-              share what&apos;s happening at the frontier of medicine.
-            </p>
-            <p className="text-[#333] text-xs mt-6">View all news →</p>
-          </Link>
-        </div>
+        <NewsCarousel posts={newsPosts} />
       </section>
 
       {/* CTA */}
