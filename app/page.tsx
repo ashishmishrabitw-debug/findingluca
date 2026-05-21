@@ -30,17 +30,18 @@ const pillars = [
 
 export default function Home() {
   const newsPosts = getNewsPosts();
+
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        {/* Background glow */}
+      {/* Full-screen news carousel — first thing you see */}
+      <NewsCarousel posts={newsPosts} />
+
+      {/* Lab identity section */}
+      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00e5ff] opacity-[0.04] blur-3xl" />
-          <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-[#00e5ff] opacity-[0.03] blur-3xl" />
         </div>
 
-        {/* Logo */}
         <div className="mb-8">
           <Image
             src="/logo.png"
@@ -53,12 +54,12 @@ export default function Home() {
 
         <TextScramble text="Search and Research Laboratory" className="text-[#00e5ff] mb-6" />
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
           Building the{" "}
           <span className="text-[#00e5ff]">Future</span>
           <br />
           of Medicine
-        </h1>
+        </h2>
 
         <p className="text-[#a0a0a0] text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
           We believe medicine is one of the most important frontiers of our
@@ -81,16 +82,10 @@ export default function Home() {
             Join the Lab
           </Link>
         </div>
-
-        {/* Scroll hint */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#333]">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#333]" />
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-        </div>
       </section>
 
       {/* Research pillars */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
+      <section className="max-w-6xl mx-auto px-6 pb-24">
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
           What We&apos;re Working On
         </p>
@@ -148,27 +143,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* News carousel */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-              Latest News
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold">From the Lab</h2>
-          </div>
-          <Link
-            href="/news"
-            className="text-sm text-[#a0a0a0] hover:text-[#00e5ff] transition-colors hidden sm:block"
-          >
-            All news →
-          </Link>
-        </div>
-        <NewsCarousel posts={newsPosts} />
-      </section>
-
       {/* CTA */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
+      <section className="max-w-6xl mx-auto px-6 py-24">
         <div className="rounded-2xl border border-[#00e5ff]/20 bg-[#00e5ff]/5 px-8 py-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Want to be part of this?
