@@ -31,7 +31,7 @@ export default function Navbar() {
             className="rounded-full object-contain bg-black"
           />
           <span className="text-white font-bold text-lg tracking-tight">
-            Finding Luca
+            Finding Luca <span className="text-[#00e5ff]">S&amp;RL</span>
           </span>
         </Link>
 

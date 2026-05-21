@@ -48,7 +48,7 @@ export default function Home() {
           />
         </div>
 
-        <TextScramble text="Finding Luca Search and Research Laboratory" className="text-[#00e5ff] mb-6" />
+        <TextScramble text="Search and Research Laboratory" className="text-[#00e5ff] mb-6" />
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
           Building the{" "}
