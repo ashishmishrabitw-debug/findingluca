@@ -70,21 +70,25 @@ export function TextScramble({ text, className = "" }: TextScrambleProps) {
       onMouseLeave={handleMouseLeave}
     >
       <span className="relative font-mono text-sm tracking-[0.2em] uppercase">
-        {displayText.split("").map((char, i) => (
-          <span
-            key={i}
-            className={`inline-block transition-all duration-150 ${
-              isScrambling && char !== text[i]
-                ? "text-[#00e5ff] scale-110"
-                : "text-white"
-            }`}
-            style={{
-              transitionDelay: `${i * 10}ms`,
-            }}
-          >
-            {char}
-          </span>
-        ))}
+        {displayText.split("").map((char, i) =>
+          char === " " ? (
+            <span key={i}>&nbsp;</span>
+          ) : (
+            <span
+              key={i}
+              className={`inline-block transition-all duration-150 ${
+                isScrambling && char !== text[i]
+                  ? "text-[#00e5ff] scale-110"
+                  : "text-white"
+              }`}
+              style={{
+                transitionDelay: `${i * 10}ms`,
+              }}
+            >
+              {char}
+            </span>
+          )
+        )}
       </span>
 
       {/* Animated underline */}
