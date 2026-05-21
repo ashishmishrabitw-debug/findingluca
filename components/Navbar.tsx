@@ -28,7 +28,7 @@ export default function Navbar() {
             alt="Finding Luca"
             width={32}
             height={32}
-            className="rounded-full object-cover"
+            className="rounded-full object-contain bg-black"
           />
           <span className="text-white font-bold text-lg tracking-tight">
             Finding Luca

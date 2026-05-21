@@ -43,7 +43,7 @@ export default function Home() {
             alt="Finding Luca"
             width={80}
             height={80}
-            className="rounded-full object-cover ring-1 ring-[#00e5ff]/20"
+            className="rounded-full object-contain bg-black ring-1 ring-[#00e5ff]/20"
           />
         </div>
 
