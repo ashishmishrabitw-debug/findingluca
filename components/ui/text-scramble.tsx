@@ -45,7 +45,7 @@ export function TextScramble({ text, className = "" }: TextScrambleProps) {
         setDisplayText(text)
         setIsScrambling(false)
       }
-    }, 80)
+    }, 50)
   }, [text])
 
   const handleMouseEnter = () => {
