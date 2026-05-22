@@ -1,11 +1,11 @@
 ---
-title: "Why I Started Finding Luca"
+title: "MISSION: DESTROY DISEASE"
 date: "2026-05-21"
-excerpt: "Medicine has always been the intersection of science and humanity. Here's why I believe the next decade will define the next century of health."
+excerpt: "This laboratory can be thought of less as a healthcare company and more as a defense company. Developing weapons of mass destruction."
 tag: "Essay"
 ---
 
-There's a moment in every scientist's life when the abstract becomes personal.
+Why serve humanity?
 
 For me, medicine stopped being a field and started being a mission. Not because of a single dramatic event, but because of an accumulating weight — reading about diseases that kill millions of people who had no good options, watching brilliant researchers spin their wheels on the wrong problems, seeing how slowly the gap between what we *know* and what we *can do* actually closes.
 
