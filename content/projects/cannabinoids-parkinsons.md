@@ -1,6 +1,6 @@
 ---
 title: "Cannabinoids in Parkinson's Therapy"
-date: "2026-05-21"
+date: "2026-05-22"
 excerpt: "Exploring whether cannabinoid compounds can slow neurodegeneration and alleviate motor symptoms in Parkinson's disease patients."
 tag: "Project"
 status: "Active"
