@@ -19,7 +19,7 @@ export function TextScramble({ text, className = "" }: TextScrambleProps) {
   const scramble = useCallback(() => {
     setIsScrambling(true)
     frameRef.current = 0
-    const duration = text.length * 3
+    const duration = text.length * 6
 
     if (intervalRef.current) clearInterval(intervalRef.current)
 
@@ -45,7 +45,7 @@ export function TextScramble({ text, className = "" }: TextScrambleProps) {
         setDisplayText(text)
         setIsScrambling(false)
       }
-    }, 30)
+    }, 80)
   }, [text])
 
   const handleMouseEnter = () => {
