@@ -41,7 +41,7 @@ export default function NewsCarousel({ posts }: Props) {
   if (posts.length === 0) return null
 
   const post = posts[current]
-  const bgSrc = bgImages[post.type] ?? fallbackImages[current % fallbackImages.length]
+  const bgSrc = post.image ?? bgImages[post.type] ?? fallbackImages[current % fallbackImages.length]
 
   return (
     <div className="relative w-full min-h-screen flex flex-col overflow-hidden">

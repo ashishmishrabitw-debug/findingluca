@@ -4,6 +4,7 @@ date: "2026-05-21"
 excerpt: "Exploring whether cannabinoid compounds can slow neurodegeneration and alleviate motor symptoms in Parkinson's disease patients."
 tag: "Project"
 status: "Active"
+image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1920&q=80"
 ---
 
 Parkinson's disease affects over 10 million people worldwide, with limited options for slowing its progression. Current treatments manage symptoms but do not address the underlying neurodegeneration.

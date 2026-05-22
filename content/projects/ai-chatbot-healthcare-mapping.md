@@ -4,6 +4,7 @@ date: "2026-05-22"
 excerpt: "A survey-based study to map how AI chatbots are currently being used across healthcare settings — by patients, clinicians, and institutions."
 tag: "Project"
 status: "Active"
+image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1920&q=80"
 ---
 
 Artificial intelligence chatbots are being adopted across healthcare at an accelerating pace — but there is little systematic understanding of how, where, and by whom they are actually being used. This project aims to change that.

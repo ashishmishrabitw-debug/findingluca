@@ -10,6 +10,7 @@ export type Post = {
   tag: string;
   content: string;
   type: "blog" | "news" | "projects";
+  image?: string;
 };
 
 function getPostsFromDir(dir: string, type: "blog" | "news" | "projects"): Post[] {
@@ -31,6 +32,7 @@ function getPostsFromDir(dir: string, type: "blog" | "news" | "projects"): Post[
         tag: data.tag ?? "Post",
         content,
         type,
+        image: data.image,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
