@@ -1,19 +1,20 @@
 ---
-title: "MISSION: DESTROY DISEASE"
+title: "Why serve humanity?"
 date: "2026-05-21"
-excerpt: "This laboratory can be thought of less as a healthcare company and more as a defense company. Developing weapons of mass destruction."
+excerpt: "Before putting our heart and soul into destroying disease, we must first ask ourselves, why? Why serve this destructive species that is pillaging mother Earth?"
 tag: "Essay"
 ---
 
-Why serve humanity?
+Humanity has been causing significant damage to this planet and suffering to its non vocal inhabitants.
 
+This laboratory can be thought of less as a healthcare company and more as a defense company. Developing weapons of mass destruction.
 For me, medicine stopped being a field and started being a mission. Not because of a single dramatic event, but because of an accumulating weight — reading about diseases that kill millions of people who had no good options, watching brilliant researchers spin their wheels on the wrong problems, seeing how slowly the gap between what we *know* and what we *can do* actually closes.
 
 Finding Luca is my attempt to close that gap, even a little.
 
 ## What the name means
 
-The name is personal. Luca represents something I'm searching for — not a person, exactly, but a direction. A north star. The idea that if you follow the right questions far enough, you find something that matters.
+It is inspired by Finding Nemo. And Luca is the name of our single celled common ancestor. Joining them together we get Finding Luca which is not 
 
 ## Why medicine, why now
 
