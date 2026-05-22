@@ -46,15 +46,15 @@ const areas = [
   {
     id: "longevity-science",
     icon: "◇",
-    title: "Longevity Science",
+    title: "Pursuit for Immortality",
     status: "Incoming",
-    tagline: "More healthy years, not just more years.",
+    tagline: "Not just longer life — no death at all.",
     description:
-      "Aging is the single greatest risk factor for nearly every major disease. Understanding its mechanisms — from epigenetic drift to mitochondrial decline — may unlock interventions that don't just extend lifespan, but dramatically extend healthspan.",
+      "Aging is the single greatest risk factor for nearly every major disease. But we ask a more radical question: what if aging itself is not inevitable? We explore the mechanisms of biological decay — from epigenetic drift to mitochondrial decline — with the audacious goal of defeating them entirely.",
     questions: [
-      "What are the most tractable hallmarks of aging?",
-      "How do we measure biological age accurately?",
-      "Which interventions have the strongest evidence at a systems level?",
+      "Is biological immortality a physical possibility?",
+      "Which hallmarks of aging are most tractable with current tools?",
+      "What would a world without age-related death look like — and should we build it?",
     ],
   },
 ];

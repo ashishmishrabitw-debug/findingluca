@@ -3,6 +3,7 @@ title: "Why serve humanity?"
 date: "2026-05-21"
 excerpt: "Before putting our heart and soul into destroying disease, we must first ask ourselves, why? Why serve this destructive species that is pillaging mother Earth?"
 tag: "Essay"
+image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80"
 ---
 
 Humanity has been causing significant damage to this planet and suffering to its non vocal inhabitants.
