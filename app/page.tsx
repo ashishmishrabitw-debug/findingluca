@@ -102,17 +102,17 @@ export default function Home() {
               className="group relative rounded-2xl overflow-hidden border border-[#1e1e1e] hover:border-[#00e5ff]/30 transition-colors block"
             >
               {/* Background image */}
-              <div className="relative h-48 w-full">
+              <div className="relative aspect-square w-full">
                 <Image
                   src={pillar.image}
                   alt={pillar.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-[#0a0a0a]/60" />
               </div>
               {/* Text */}
-              <div className="bg-[#111] p-6">
+              <div className="bg-[#111] p-5">
                 <div className="flex items-center gap-3 mb-3">
                   <h3 className="font-semibold text-lg">{pillar.title}</h3>
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-[#00e5ff]/10 text-[#00e5ff]">
