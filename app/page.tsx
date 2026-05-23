@@ -26,6 +26,13 @@ const pillarsWithImages = [
     status: "Active",
     image: "/nutrition-medicine.png",
   },
+  {
+    icon: "◇",
+    title: "Prosthetics",
+    description: "Building human-centered bionic limbs and assistive technologies that restore movement, touch, independence, and dignity.",
+    status: "Active",
+    image: "/prosthetics.png",
+  },
 ];
 
 
@@ -91,10 +98,10 @@ export default function Home() {
           Frontiers
         </p>
         <h2 className="text-3xl md:text-4xl font-bold mb-16 max-w-xl">
-          Three pillars driving our work
+          Four pillars driving our work
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {pillarsWithImages.map((pillar) => (
             <Link
               key={pillar.title}

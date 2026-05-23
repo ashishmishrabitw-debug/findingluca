@@ -44,8 +44,22 @@ const areas = [
     ],
   },
   {
-    id: "longevity-science",
+    id: "prosthetics",
     icon: "◇",
+    title: "Prosthetics",
+    status: "Active",
+    tagline: "Restoring movement, touch, and independence.",
+    description:
+      "Modern prosthetics sit at the intersection of robotics, neuroscience, materials science, and human-centered design. We explore bionic limbs and assistive systems that do more than replace what was lost — they expand what people can do.",
+    questions: [
+      "How can prosthetics feel more natural and responsive to the body?",
+      "Can sensory feedback restore touch, pressure, and proprioception?",
+      "What design choices make advanced prosthetics accessible beyond elite clinical settings?",
+    ],
+  },
+  {
+    id: "longevity-science",
+    icon: "◆",
     title: "Pursuit for Immortality",
     status: "Incoming",
     tagline: "Not just longer life — no death at all.",
