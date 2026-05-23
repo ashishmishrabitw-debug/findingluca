@@ -106,7 +106,7 @@ export default function Home() {
             <Link
               key={pillar.title}
               href="/frontiers"
-              className="group relative rounded-2xl overflow-hidden border border-[#1e1e1e] hover:border-[#00e5ff]/30 transition-colors block"
+              className="group relative h-full rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#111] hover:border-[#00e5ff]/30 transition-colors flex flex-col"
             >
               {/* Background image */}
               <div className="relative aspect-square w-full overflow-hidden bg-[#0a0a0a]">
@@ -116,10 +116,10 @@ export default function Home() {
                   fill
                   className="object-cover object-center brightness-[0.55] group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/45 to-[#0a0a0a]/85" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/45 to-[#111]/95" />
               </div>
               {/* Text */}
-              <div className="bg-[#111] p-5">
+              <div className="bg-[#111] p-5 flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   <h3 className="font-semibold text-lg">{pillar.title}</h3>
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-[#00e5ff]/10 text-[#00e5ff]">
