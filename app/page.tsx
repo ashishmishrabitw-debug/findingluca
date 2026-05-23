@@ -102,14 +102,14 @@ export default function Home() {
               className="group relative rounded-2xl overflow-hidden border border-[#1e1e1e] hover:border-[#00e5ff]/30 transition-colors block"
             >
               {/* Background image */}
-              <div className="relative aspect-square w-full">
+              <div className="relative aspect-square w-full overflow-hidden bg-[#0a0a0a]">
                 <Image
                   src={pillar.image}
                   alt={pillar.title}
                   fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-center brightness-[0.55] group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-[#0a0a0a]/60" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/45 to-[#0a0a0a]/85" />
               </div>
               {/* Text */}
               <div className="bg-[#111] p-5">
