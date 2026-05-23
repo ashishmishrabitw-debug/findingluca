@@ -10,7 +10,7 @@ const pillarsWithImages = [
     title: "Robotics",
     description: "Surgical robotics, rehabilitation devices, and autonomous systems that extend what clinicians can do and bring precision medicine everywhere.",
     status: "Active",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+    image: "/robotics.png",
   },
   {
     icon: "◎",
@@ -24,7 +24,7 @@ const pillarsWithImages = [
     title: "Nutrition Medicine",
     description: "Exploring diet, micronutrients, and the gut microbiome as powerful levers in preventing and treating disease.",
     status: "Active",
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80",
+    image: "/nutrition-medicine.png",
   },
 ];
 
