@@ -1,0 +1,72 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#050708"/>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g opacity="0.22">
+    <circle cx="435" cy="248" r="220" fill="#00E5FF" filter="url(#blur)"/>
+    <circle cx="1450" cy="775" r="260" fill="#00E5FF" filter="url(#blur)"/>
+  </g>
+  <g transform="translate(470 120)">
+    <path d="M164 60C622 162 394 710 852 812" stroke="#E8FBFF" stroke-width="18" stroke-linecap="round"/>
+    <path d="M852 60C394 162 622 710 164 812" stroke="#00E5FF" stroke-width="18" stroke-linecap="round"/>
+    <g stroke="#7AF3FF" stroke-width="8" stroke-linecap="round" opacity="0.78">
+      <path d="M200 118H816"/>
+      <path d="M246 188H770"/>
+      <path d="M286 258H730"/>
+      <path d="M310 328H706"/>
+      <path d="M316 398H700"/>
+      <path d="M298 468H718"/>
+      <path d="M260 538H756"/>
+      <path d="M218 608H798"/>
+      <path d="M178 678H838"/>
+      <path d="M150 748H866"/>
+    </g>
+    <g fill="#00E5FF">
+      <circle cx="164" cy="60" r="26"/>
+      <circle cx="852" cy="60" r="26"/>
+      <circle cx="200" cy="118" r="16"/>
+      <circle cx="816" cy="118" r="16"/>
+      <circle cx="246" cy="188" r="16"/>
+      <circle cx="770" cy="188" r="16"/>
+      <circle cx="286" cy="258" r="16"/>
+      <circle cx="730" cy="258" r="16"/>
+      <circle cx="310" cy="328" r="16"/>
+      <circle cx="706" cy="328" r="16"/>
+      <circle cx="316" cy="398" r="16"/>
+      <circle cx="700" cy="398" r="16"/>
+      <circle cx="298" cy="468" r="16"/>
+      <circle cx="718" cy="468" r="16"/>
+      <circle cx="260" cy="538" r="16"/>
+      <circle cx="756" cy="538" r="16"/>
+      <circle cx="218" cy="608" r="16"/>
+      <circle cx="798" cy="608" r="16"/>
+      <circle cx="178" cy="678" r="16"/>
+      <circle cx="838" cy="678" r="16"/>
+      <circle cx="164" cy="812" r="26"/>
+      <circle cx="852" cy="812" r="26"/>
+    </g>
+  </g>
+  <g opacity="0.72">
+    <path d="M1373 270C1373 235 1406 202 1406 202C1406 202 1439 235 1439 270C1439 291 1424 306 1406 306C1388 306 1373 291 1373 270Z" fill="#C7FBFF"/>
+    <path d="M310 790C310 759 339 730 339 730C339 730 368 759 368 790C368 808 355 821 339 821C323 821 310 808 310 790Z" fill="#00E5FF"/>
+    <path d="M1515 738C1515 710 1542 683 1542 683C1542 683 1569 710 1569 738C1569 755 1557 767 1542 767C1527 767 1515 755 1515 738Z" fill="#7AF3FF"/>
+  </g>
+  <g opacity="0.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="8">
+    <text x="116" y="168" fill="#00E5FF">A T G C</text>
+    <text x="1458" y="928" fill="#E8FBFF">H+ tunneling</text>
+  </g>
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(960 540) rotate(90) scale(820 1240)">
+      <stop stop-color="#0D2C33"/>
+      <stop offset="0.45" stop-color="#071113"/>
+      <stop offset="1" stop-color="#050708"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(960 540) scale(1050 600)">
+      <stop offset="0.42" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.72"/>
+    </radialGradient>
+    <filter id="blur" x="-200" y="-200" width="2400" height="1600" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="105"/>
+    </filter>
+  </defs>
+</svg>

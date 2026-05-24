@@ -4,7 +4,7 @@ date: "2026-05-20"
 excerpt: "Investigating how water molecules around DNA may influence proton tunneling, base-pair stability, mutation dynamics, and the quantum edge of biology."
 tag: "Project"
 status: "Active"
-image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&q=80"
+image: "/dna-proton-tunneling.svg"
 ---
 
 DNA is usually described as a chemical code, but at the scale of hydrogen bonds and base-pair interactions, biology begins to touch quantum mechanics. This project explores whether hydration — the water environment surrounding DNA — can modulate proton tunneling events that may influence base-pair stability and mutation patterns.
