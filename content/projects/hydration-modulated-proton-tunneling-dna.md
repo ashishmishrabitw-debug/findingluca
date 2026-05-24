@@ -1,6 +1,6 @@
 ---
 title: "Hydration-Modulated Proton Tunneling in DNA"
-date: "2026-05-21"
+date: "2026-05-20"
 excerpt: "Investigating how water molecules around DNA may influence proton tunneling, base-pair stability, mutation dynamics, and the quantum edge of biology."
 tag: "Project"
 status: "Active"
