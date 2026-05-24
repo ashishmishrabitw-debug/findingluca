@@ -1,6 +1,6 @@
 ---
 title: "Mapping AI Chatbot Integration in Healthcare"
-date: "2026-05-21"
+date: "2026-05-20"
 excerpt: "A survey-based study to map how AI chatbots are currently being used across healthcare settings — by patients, clinicians, and institutions."
 tag: "Project"
 status: "Active"
