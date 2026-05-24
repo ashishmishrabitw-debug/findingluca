@@ -1,7 +1,6 @@
 import { getProjectPosts, getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
@@ -47,18 +46,6 @@ export default async function ProjectPage(props: Props) {
         <p className="text-[#a0a0a0] text-xl leading-relaxed mb-12 border-b border-[#1e1e1e] pb-12">
           {post.excerpt}
         </p>
-
-        {post.image && (
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-12">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
 
         <div
           className="prose prose-invert prose-lg max-w-none
