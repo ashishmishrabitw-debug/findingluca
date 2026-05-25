@@ -30,18 +30,22 @@ export default function Navbar({ posts }: Props) {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-4 hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/logo.png"
-              alt="Finding Luca"
-              width={32}
-              height={32}
-              className="rounded-full object-contain bg-black"
+              src="/whpc-heart.png"
+              alt="White Heart"
+              width={38}
+              height={38}
+              className="object-contain"
             />
-            <span className="text-white font-bold text-lg tracking-tight">
-              Finding Luca <span className="text-[#00e5ff]">S&amp;RL</span>
-            </span>
+            <Image
+              src="/whpc-text.png"
+              alt="White Heart's Placebo Club"
+              width={160}
+              height={42}
+              className="object-contain"
+            />
           </Link>
 
           {/* Desktop links */}
