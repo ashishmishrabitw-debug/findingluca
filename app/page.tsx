@@ -17,7 +17,7 @@ const pillarsWithImages = [
     title: "Genomics",
     description: "Reading the genome to understand disease, design tailored therapies, and bring precision medicine to every individual.",
     status: "Active",
-    image: "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=800&q=80",
+    image: "/logo.png",
   },
   {
     icon: "◉",
@@ -52,10 +52,10 @@ export default function Home() {
 
         <div className="mb-8">
           <Image
-            src="/logo.png"
-            alt="Finding Luca"
-            width={80}
-            height={80}
+            src="/whpc-heart.png"
+            alt="WHPC"
+            width={120}
+            height={120}
             className="rounded-full object-contain bg-black ring-1 ring-[#00e5ff]/20"
           />
         </div>
