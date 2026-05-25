@@ -54,9 +54,9 @@ export default function Home() {
           <Image
             src="/whpc-heart.png"
             alt="WHPC"
-            width={120}
-            height={120}
-            className="rounded-full object-contain bg-black ring-1 ring-[#00e5ff]/20"
+            width={96}
+            height={96}
+            className="h-20 w-20 md:h-24 md:w-24 object-contain"
           />
         </div>
 
