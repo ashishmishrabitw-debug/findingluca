@@ -30,20 +30,13 @@ export default function Navbar({ posts }: Props) {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/whpc-heart.png"
-              alt="White Heart"
-              width={38}
-              height={38}
-              className="object-contain"
-            />
-            <Image
-              src="/whpc-text.png"
+              src="/whpc-logo.png"
               alt="White Heart's Placebo Club"
-              width={160}
-              height={42}
+              width={227}
+              height={48}
               className="object-contain"
             />
           </Link>
