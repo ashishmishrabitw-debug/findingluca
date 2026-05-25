@@ -12,11 +12,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "a search and research laboratory | WHPC",
+  title: "WHPC | Search and Research Laboratory",
   description:
     "A research laboratory dedicated to pioneering the next generation of medicine through science, technology, and human curiosity.",
   openGraph: {
-    title: "a search and research laboratory | WHPC",
+    title: "WHPC | Search and Research Laboratory",
     description:
       "A research laboratory dedicated to pioneering the next generation of medicine through science, technology, and human curiosity.",
     siteName: "WHPC",
