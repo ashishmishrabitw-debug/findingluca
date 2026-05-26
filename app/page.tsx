@@ -46,44 +46,49 @@ export default function Home() {
       <NewsCarousel posts={allPosts} />
 
       {/* Lab identity section */}
-      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center text-center py-32 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00e5ff] opacity-[0.04] blur-3xl" />
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          <div className="absolute inset-x-0 top-[calc(50%+74px)] h-px bg-gradient-to-r from-transparent via-[#d61f2a]/20 to-transparent" />
         </div>
 
-        <div className="relative mb-10 flex min-h-[340px] w-full max-w-4xl items-center justify-center overflow-hidden md:min-h-[460px]">
+        <div className="relative mb-10 flex min-h-[360px] w-screen items-center justify-center overflow-hidden md:min-h-[500px]">
           <GlowyWavesBackdrop />
-          <div className="absolute inset-x-8 top-1/2 h-32 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent blur-3xl" />
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+          <div className="absolute inset-x-0 top-[calc(50%+90px)] h-px bg-gradient-to-r from-transparent via-[#d61f2a]/30 to-transparent" />
+          <div className="absolute left-1/2 top-1/2 h-[70%] w-[min(82vw,860px)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-white/10 shadow-[inset_0_0_60px_rgba(255,255,255,0.04),0_0_80px_rgba(0,0,0,0.7)]" />
           <Image
             src="/whpc-hero-logo.png"
             alt="White Heart's Placebo Club"
             width={780}
             height={780}
             priority
-            className="relative z-10 w-[min(92vw,680px)] md:w-[min(78vw,760px)] object-contain drop-shadow-[0_0_42px_rgba(0,229,255,0.24)]"
+            className="relative z-10 w-[min(92vw,680px)] md:w-[min(78vw,760px)] object-contain drop-shadow-[0_28px_46px_rgba(0,0,0,0.82)]"
           />
         </div>
 
-        <TextScramble text="Search and Research Laboratory" className="text-[#00e5ff] mb-14 md:mb-20" />
+        <div className="px-6">
+          <TextScramble text="Search and Research Laboratory" className="text-[#d61f2a] mb-14 md:mb-20" />
+        </div>
 
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
+        <h2 className="px-6 text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
           Building the{" "}
-          <span className="text-[#00e5ff]">Future</span>
+          <span className="text-[#d61f2a]">Future</span>
           <br />
           of Medicine
         </h2>
 
-        <p className="text-[#a0a0a0] text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
+        <p className="px-6 text-[#a0a0a0] text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
           We believe medicine is one of the most important frontiers of our
           time. Finding Luca is a research lab dedicated to exploring the
           questions that matter most — from how we detect disease, to how we
           heal.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 px-6">
           <Link
             href="/constitution"
-            className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] transition-colors text-sm"
+            className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-[#d61f2a] hover:text-white transition-colors text-sm"
           >
             Constitution →
           </Link>

@@ -19,40 +19,40 @@ type Wave = {
 
 const waves: Wave[] = [
   {
-    amplitude: 34,
-    frequency: 0.008,
+    amplitude: 30,
+    frequency: 0.009,
     phase: 0,
-    speed: 0.0012,
-    color: "rgba(0, 229, 255, 0.9)",
-    opacity: 0.6,
-    width: 2.4,
+    speed: 0.0011,
+    color: "rgba(255, 255, 255, 0.92)",
+    opacity: 0.54,
+    width: 1.45,
   },
   {
-    amplitude: 42,
-    frequency: 0.006,
+    amplitude: 46,
+    frequency: 0.0062,
     phase: Math.PI / 2,
     speed: 0.001,
-    color: "rgba(255, 255, 255, 0.72)",
-    opacity: 0.42,
-    width: 1.6,
+    color: "rgba(214, 31, 42, 0.82)",
+    opacity: 0.36,
+    width: 1.25,
   },
   {
-    amplitude: 28,
-    frequency: 0.01,
+    amplitude: 24,
+    frequency: 0.012,
     phase: Math.PI,
-    speed: 0.0014,
-    color: "rgba(255, 82, 82, 0.75)",
-    opacity: 0.34,
-    width: 1.8,
+    speed: 0.0015,
+    color: "rgba(255, 255, 255, 0.52)",
+    opacity: 0.3,
+    width: 0.9,
   },
   {
-    amplitude: 52,
-    frequency: 0.0048,
+    amplitude: 56,
+    frequency: 0.0044,
     phase: Math.PI * 1.45,
     speed: 0.0008,
-    color: "rgba(0, 229, 255, 0.5)",
-    opacity: 0.28,
-    width: 3,
+    color: "rgba(110, 110, 110, 0.7)",
+    opacity: 0.22,
+    width: 1.1,
   },
 ];
 
@@ -90,12 +90,21 @@ export function GlowyWavesBackdrop() {
       targetMouseRef.current = center;
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
+    const updatePointer = (clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
       targetMouseRef.current = {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
       };
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      updatePointer(event.clientX, event.clientY);
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      if (touch) updatePointer(touch.clientX, touch.clientY);
     };
 
     const handleMouseLeave = () => {
@@ -110,15 +119,17 @@ export function GlowyWavesBackdrop() {
     resizeCanvas();
 
     window.addEventListener("resize", resizeCanvas);
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("mouseleave", handleMouseLeave);
     reducedMotionQuery.addEventListener("change", handleReducedMotionChange);
 
     const drawWave = (
       wave: Wave,
       width: number,
       height: number,
-      centerY: number
+      centerY: number,
+      index: number
     ) => {
       ctx.save();
       ctx.beginPath();
@@ -126,11 +137,15 @@ export function GlowyWavesBackdrop() {
       for (let x = -20; x <= width + 20; x += 3) {
         const dx = x - mouseRef.current.x;
         const distance = Math.abs(dx);
-        const influence = Math.max(0, 1 - distance / 260);
+        const influence = Math.max(0, 1 - distance / 340);
         const mouseLift =
           influence *
-          (prefersReducedMotion ? 6 : 28) *
+          (prefersReducedMotion ? 8 : 42) *
           Math.sin(time * 0.004 + x * 0.018 + wave.phase);
+        const parallax =
+          (mouseRef.current.y / Math.max(height, 1) - 0.5) *
+          influence *
+          (index % 2 === 0 ? 34 : -28);
 
         const y =
           centerY +
@@ -139,7 +154,8 @@ export function GlowyWavesBackdrop() {
           Math.sin(x * wave.frequency * 0.42 + time * wave.speed * 1.8) *
             wave.amplitude *
             0.38 +
-          mouseLift;
+          mouseLift +
+          parallax;
 
         if (x === -20) {
           ctx.moveTo(x, y);
@@ -151,8 +167,14 @@ export function GlowyWavesBackdrop() {
       ctx.globalAlpha = wave.opacity;
       ctx.lineWidth = wave.width;
       ctx.strokeStyle = wave.color;
-      ctx.shadowBlur = 36;
-      ctx.shadowColor = wave.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = "rgba(255, 255, 255, 0.18)";
+      ctx.stroke();
+
+      ctx.globalAlpha = wave.opacity * 0.16;
+      ctx.lineWidth = wave.width + 8;
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = wave.color;
       ctx.stroke();
       ctx.restore();
     };
@@ -180,16 +202,16 @@ export function GlowyWavesBackdrop() {
         height / 2,
         Math.max(width, height) * 0.5
       );
-      glow.addColorStop(0, "rgba(0, 229, 255, 0.18)");
-      glow.addColorStop(0.42, "rgba(0, 229, 255, 0.055)");
-      glow.addColorStop(0.72, "rgba(255, 82, 82, 0.035)");
+      glow.addColorStop(0, "rgba(255, 255, 255, 0.075)");
+      glow.addColorStop(0.38, "rgba(214, 31, 42, 0.045)");
+      glow.addColorStop(0.72, "rgba(255, 255, 255, 0.018)");
       glow.addColorStop(1, "rgba(0, 0, 0, 0)");
 
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, width, height);
 
       waves.forEach((wave, index) => {
-        drawWave(wave, width, height, height * (0.42 + index * 0.045));
+        drawWave(wave, width, height, height * (0.42 + index * 0.045), index);
       });
 
       animationId = window.requestAnimationFrame(animate);
@@ -199,8 +221,9 @@ export function GlowyWavesBackdrop() {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
       reducedMotionQuery.removeEventListener(
         "change",
         handleReducedMotionChange
@@ -212,7 +235,7 @@ export function GlowyWavesBackdrop() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 h-full w-full opacity-95 [mask-image:radial-gradient(ellipse_at_center,black_0%,black_52%,transparent_78%)]"
+      className="absolute inset-0 h-full w-full opacity-95"
       aria-hidden="true"
     />
   );
