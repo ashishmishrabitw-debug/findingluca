@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { useState } from "react";
 import type { FrontierArea } from "@/lib/frontiers";
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function FrontiersSlider({ areas }: Props) {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedArea, setSelectedArea] = useState<FrontierArea | null>(null);
 
   return (
     <div className="-mx-6 overflow-hidden">
@@ -20,10 +20,7 @@ export default function FrontiersSlider({ areas }: Props) {
         role="list"
         aria-label="Frontier topics"
       >
-        {areas.map((area) => {
-          const isExpanded = expandedId === area.id;
-
-          return (
+        {areas.map((area) => (
             <article
               key={area.id}
               role="listitem"
@@ -58,26 +55,20 @@ export default function FrontiersSlider({ areas }: Props) {
 
                   <button
                     type="button"
-                    aria-label={`${isExpanded ? "Collapse" : "Expand"} ${area.title}`}
-                    aria-expanded={isExpanded}
-                    onClick={() => setExpandedId(isExpanded ? null : area.id)}
+                    aria-label={`Open ${area.title} details`}
+                    onClick={() => setSelectedArea(area)}
                     className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#1e1e1e] text-[#a0a0a0] transition-[background-color,border-color,color,transform] duration-300 ease-out hover:border-[#00e5ff]/60 hover:bg-[#00e5ff] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00e5ff]"
                   >
-                    <Plus
-                      className={`h-4 w-4 transition-transform duration-300 ease-out ${
-                        isExpanded ? "rotate-45" : ""
-                      }`}
-                    />
+                    <Plus className="h-4 w-4" />
                   </button>
                 </div>
 
                 <p className="text-sm leading-relaxed text-[#a0a0a0]">
-                  {isExpanded ? area.description : area.shortDescription}
+                  {area.shortDescription}
                 </p>
               </div>
             </article>
-          );
-        })}
+          ))}
       </div>
 
       <div className="mt-6 text-center">
@@ -88,6 +79,46 @@ export default function FrontiersSlider({ areas }: Props) {
           See all frontiers →
         </Link>
       </div>
+
+      {selectedArea && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-black/65 px-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="frontier-modal-title"
+          onClick={() => setSelectedArea(null)}
+        >
+          <div
+            className="relative w-[min(92vw,42rem)] rounded-2xl border border-[#1e1e1e] bg-[#111] p-6 shadow-2xl shadow-black/60 md:p-8"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close details"
+              onClick={() => setSelectedArea(null)}
+              className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[#1e1e1e] text-[#a0a0a0] transition-colors hover:border-[#333] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00e5ff]"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-[#00e5ff]">
+              frontier
+            </p>
+            <h3
+              id="frontier-modal-title"
+              className="mb-3 pr-12 text-3xl font-bold tracking-tight text-white md:text-4xl"
+            >
+              {selectedArea.title}
+            </h3>
+            <p className="mb-6 text-xs font-medium uppercase tracking-widest text-[#777]">
+              {selectedArea.tagline}
+            </p>
+            <p className="text-base leading-relaxed text-[#a0a0a0]">
+              {selectedArea.description}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
