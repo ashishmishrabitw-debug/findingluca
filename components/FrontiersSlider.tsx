@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Plus, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import type { FrontierArea } from "@/lib/frontiers";
 
@@ -80,45 +81,74 @@ export default function FrontiersSlider({ areas }: Props) {
         </Link>
       </div>
 
-      {selectedArea && (
-        <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/65 px-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="frontier-modal-title"
-          onClick={() => setSelectedArea(null)}
-        >
-          <div
-            className="relative w-[min(92vw,42rem)] rounded-2xl border border-[#1e1e1e] bg-[#111] p-6 shadow-2xl shadow-black/60 md:p-8"
-            onClick={(event) => event.stopPropagation()}
+      <AnimatePresence>
+        {selectedArea && (
+          <motion.div
+            className="fixed inset-0 z-50 grid place-items-center bg-black/65 px-4 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="frontier-modal-title"
+            onClick={() => setSelectedArea(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
           >
-            <button
-              type="button"
-              aria-label="Close details"
-              onClick={() => setSelectedArea(null)}
-              className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[#1e1e1e] text-[#a0a0a0] transition-colors hover:border-[#333] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00e5ff]"
+            <motion.div
+              className="relative max-h-[88vh] w-[min(92vw,42rem)] overflow-hidden rounded-2xl border border-[#1e1e1e] bg-[#111] shadow-2xl shadow-black/60"
+              onClick={(event) => event.stopPropagation()}
+              initial={{ opacity: 0, y: 22, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
             >
-              <X className="h-4 w-4" />
-            </button>
+              <motion.div
+                className="relative h-56 w-full overflow-hidden bg-[#0a0a0a] md:h-72"
+                initial={{ scale: 0.92, opacity: 0.75 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.96, opacity: 0 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Image
+                  src={selectedArea.image}
+                  alt={selectedArea.title}
+                  fill
+                  sizes="(max-width: 768px) 92vw, 42rem"
+                  className="object-cover object-center brightness-[0.82]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#111]" />
+              </motion.div>
 
-            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-[#00e5ff]">
-              frontier
-            </p>
-            <h3
-              id="frontier-modal-title"
-              className="mb-3 pr-12 text-3xl font-bold tracking-tight text-white md:text-4xl"
-            >
-              {selectedArea.title}
-            </h3>
-            <p className="mb-6 text-xs font-medium uppercase tracking-widest text-[#777]">
-              {selectedArea.tagline}
-            </p>
-            <p className="text-base leading-relaxed text-[#a0a0a0]">
-              {selectedArea.description}
-            </p>
-          </div>
-        </div>
-      )}
+              <button
+                type="button"
+                aria-label="Close details"
+                onClick={() => setSelectedArea(null)}
+                className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-black/55 text-white backdrop-blur transition-colors hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00e5ff]"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="p-6 md:p-8">
+                <p className="mb-4 text-xs font-medium uppercase tracking-widest text-[#00e5ff]">
+                  frontier
+                </p>
+                <h3
+                  id="frontier-modal-title"
+                  className="mb-3 pr-12 text-3xl font-bold tracking-tight text-white md:text-4xl"
+                >
+                  {selectedArea.title}
+                </h3>
+                <p className="mb-6 text-xs font-medium uppercase tracking-widest text-[#777]">
+                  {selectedArea.tagline}
+                </p>
+                <p className="text-base leading-relaxed text-[#a0a0a0]">
+                  {selectedArea.description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
