@@ -26,12 +26,12 @@ export default function ConstitutionPage() {
             Constitution
           </p>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            The principles behind Finding Luca
+            The principles behind WHPC
           </h1>
           <p className="text-[#a0a0a0] text-xl max-w-3xl leading-relaxed">
-            Finding Luca exists to search, research, and build toward a future
-            where disease has fewer places to hide. This constitution is the
-            working promise behind that effort.
+            White Heart&apos;s Placebo Club exists to search, research, and
+            build toward a future where disease has fewer places to hide. This
+            constitution is the working promise behind that effort.
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import SearchModal from "@/components/SearchModal"
@@ -30,9 +31,15 @@ export default function Navbar({ posts }: Props) {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center text-sm font-bold tracking-[0.18em] text-white uppercase hover:text-[#00e5ff] transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            Finding Luca
+            <Image
+              src="/whpc-logo.png"
+              alt="White Heart's Placebo Club"
+              width={227}
+              height={48}
+              className="object-contain"
+            />
           </Link>
 
           {/* Desktop links */}
@@ -42,15 +49,9 @@ export default function Navbar({ posts }: Props) {
                 key={link.href}
                 href={link.href}
                 className={`text-sm transition-colors ${
-                  link.href === "/constitution"
-                    ? `rounded-full border px-4 py-2 font-semibold ${
-                        pathname.startsWith(link.href)
-                          ? "border-[#00e5ff] bg-[#00e5ff] text-black"
-                          : "border-[#00e5ff]/35 text-[#00e5ff] hover:bg-[#00e5ff] hover:text-black"
-                      }`
-                    : pathname.startsWith(link.href)
-                      ? "text-[#00e5ff]"
-                      : "text-[#a0a0a0] hover:text-white"
+                  pathname.startsWith(link.href)
+                    ? "text-[#00e5ff]"
+                    : "text-[#a0a0a0] hover:text-white"
                 }`}
               >
                 {link.label}
@@ -111,15 +112,9 @@ export default function Navbar({ posts }: Props) {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`text-sm ${
-                  link.href === "/constitution"
-                    ? `w-fit rounded-full border px-4 py-2 font-semibold ${
-                        pathname.startsWith(link.href)
-                          ? "border-[#00e5ff] bg-[#00e5ff] text-black"
-                          : "border-[#00e5ff]/35 text-[#00e5ff]"
-                      }`
-                    : pathname.startsWith(link.href)
-                      ? "text-[#00e5ff]"
-                      : "text-[#a0a0a0]"
+                  pathname.startsWith(link.href)
+                    ? "text-[#00e5ff]"
+                    : "text-[#a0a0a0]"
                 }`}
               >
                 {link.label}
