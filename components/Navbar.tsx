@@ -56,7 +56,7 @@ export default function Navbar({ posts }: Props) {
               >
                 {link.label}
                 {link.hoverText && (
-                  <span className="pointer-events-none absolute left-1/2 top-full mt-3 w-max max-w-[13rem] -translate-x-1/2 rounded-md border border-[#1e1e1e] bg-[#0f0f0f] px-3 py-2 text-center text-xs font-medium leading-snug text-[#00e5ff] opacity-0 shadow-2xl shadow-black/40 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                  <span className="pointer-events-none absolute left-1/2 top-full mt-3 w-max max-w-[13rem] -translate-x-1/2 rounded-md border border-[#1e1e1e] bg-[#0f0f0f] px-3 py-2 text-center text-xs font-medium leading-snug text-[#a0a0a0] opacity-0 shadow-2xl shadow-black/40 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                     {link.hoverText}
                   </span>
                 )}
