@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
-import { GlowyWavesBackdrop } from "@/components/ui/glowy-waves-backdrop";
-import NewsCarousel from "@/components/NewsCarousel";
-import { getAllPosts } from "@/lib/posts";
 
 const pillarsWithImages = [
   {
@@ -38,13 +35,8 @@ const pillarsWithImages = [
 
 
 export default function Home() {
-  const allPosts = getAllPosts();
-
   return (
     <div className="pt-16">
-      {/* Full-screen news carousel — first thing you see */}
-      <NewsCarousel posts={allPosts} />
-
       {/* Lab identity section */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -52,23 +44,8 @@ export default function Home() {
           <div className="absolute inset-x-0 top-[calc(50%+74px)] h-px bg-gradient-to-r from-transparent via-[#d61f2a]/20 to-transparent" />
         </div>
 
-        <div className="relative mb-10 flex min-h-[360px] w-screen items-center justify-center overflow-hidden md:min-h-[500px]">
-          <GlowyWavesBackdrop />
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent" />
-          <div className="absolute inset-x-0 top-[calc(50%+90px)] h-px bg-gradient-to-r from-transparent via-[#d61f2a]/30 to-transparent" />
-          <div className="absolute left-1/2 top-1/2 h-[70%] w-[min(82vw,860px)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-white/10 shadow-[inset_0_0_60px_rgba(255,255,255,0.04),0_0_80px_rgba(0,0,0,0.7)]" />
-          <Image
-            src="/whpc-hero-logo.png"
-            alt="White Heart's Placebo Club"
-            width={780}
-            height={780}
-            priority
-            className="relative z-10 w-[min(92vw,680px)] md:w-[min(78vw,760px)] object-contain drop-shadow-[0_28px_46px_rgba(0,0,0,0.82)]"
-          />
-        </div>
-
         <div className="px-6">
-          <TextScramble text="Search and Research Laboratory" className="text-[#d61f2a] mb-14 md:mb-20" />
+          <TextScramble text="Search and Research Laboratory" className="text-[#d61f2a] mb-6" />
         </div>
 
         <h2 className="px-6 text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
@@ -88,7 +65,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 px-6">
           <Link
             href="/constitution"
-            className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-[#d61f2a] hover:text-white transition-colors text-sm"
+            className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00e5ff] active:bg-[#009bad] transition-colors text-sm"
           >
             Constitution →
           </Link>
