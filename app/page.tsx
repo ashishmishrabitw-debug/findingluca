@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
+import NewsCarousel from "@/components/NewsCarousel";
+import { getAllPosts } from "@/lib/posts";
 
 const pillarsWithImages = [
   {
@@ -35,8 +37,13 @@ const pillarsWithImages = [
 
 
 export default function Home() {
+  const allPosts = getAllPosts();
+
   return (
     <div className="pt-16">
+      {/* Full-screen news carousel — first thing you see */}
+      <NewsCarousel posts={allPosts} />
+
       {/* Lab identity section */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
