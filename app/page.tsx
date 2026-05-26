@@ -50,13 +50,17 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00e5ff] opacity-[0.04] blur-3xl" />
         </div>
 
-        <div className="mb-8">
+        <div className="relative mb-10 flex w-full max-w-4xl items-center justify-center">
+          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/45 to-transparent" />
+          <div className="absolute inset-x-8 top-1/2 h-28 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent blur-2xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,229,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,82,82,0.12)_1px,transparent_1px)] bg-[size:72px_72px] opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]" />
           <Image
-            src="/whpc-heart.png"
-            alt="WHPC"
-            width={96}
-            height={96}
-            className="h-20 w-20 md:h-24 md:w-24 object-contain"
+            src="/whpc-hero-logo.png"
+            alt="White Heart's Placebo Club"
+            width={780}
+            height={780}
+            priority
+            className="relative z-10 w-[min(92vw,680px)] md:w-[min(78vw,760px)] object-contain drop-shadow-[0_0_42px_rgba(0,229,255,0.24)]"
           />
         </div>
 
