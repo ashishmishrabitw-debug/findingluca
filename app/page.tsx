@@ -167,12 +167,9 @@ export default function Home() {
       <section className="border-t border-b border-[#1e1e1e] py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-2xl md:text-4xl font-light leading-relaxed text-[#a0a0a0]">
-            &ldquo;The best scientists don&apos;t just follow the evidence —
-            they{" "}
-            <span className="text-white font-medium">
-              imagine what it could mean
-            </span>
-            .&rdquo;
+            &ldquo;It is not the strongest of the species that survives, not the
+            most intelligent that survives. It is the one that is the most
+            adaptable to change.&rdquo;
           </p>
         </div>
       </section>
