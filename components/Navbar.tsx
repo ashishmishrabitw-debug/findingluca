@@ -8,11 +8,11 @@ import SearchModal from "@/components/SearchModal"
 import type { Post } from "@/lib/posts"
 
 const links = [
-  { href: "/constitution", label: "Constitution" },
-  { href: "/frontiers", label: "Frontiers" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/news", label: "News" },
+  { href: "/constitution", label: "Constitution", hoverText: "core vision" },
+  { href: "/frontiers", label: "Frontiers", hoverText: "long term targets" },
+  { href: "/projects", label: "Projects", hoverText: "short term actions" },
+  { href: "/blog", label: "Blog", hoverText: "essays, articles, philosophy" },
+  { href: "/news", label: "News", hoverText: "new information" },
   { href: "/contact", label: "Join Us" },
 ]
 
@@ -48,13 +48,18 @@ export default function Navbar({ posts }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors ${
+                className={`group relative text-sm transition-colors ${
                   pathname.startsWith(link.href)
                     ? "text-[#00e5ff]"
                     : "text-[#a0a0a0] hover:text-white"
                 }`}
               >
                 {link.label}
+                {link.hoverText && (
+                  <span className="pointer-events-none absolute left-1/2 top-full mt-3 w-max max-w-[13rem] -translate-x-1/2 rounded-md border border-[#1e1e1e] bg-[#0f0f0f] px-3 py-2 text-center text-xs font-medium leading-snug text-[#00e5ff] opacity-0 shadow-2xl shadow-black/40 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    {link.hoverText}
+                  </span>
+                )}
               </Link>
             ))}
 
@@ -111,13 +116,22 @@ export default function Navbar({ posts }: Props) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-sm ${
-                  pathname.startsWith(link.href)
-                    ? "text-[#00e5ff]"
-                    : "text-[#a0a0a0]"
-                }`}
+                className="block"
               >
-                {link.label}
+                <span
+                  className={`text-sm ${
+                    pathname.startsWith(link.href)
+                      ? "text-[#00e5ff]"
+                      : "text-[#a0a0a0]"
+                  }`}
+                >
+                  {link.label}
+                </span>
+                {link.hoverText && (
+                  <span className="mt-1 block text-xs leading-snug text-[#555]">
+                    {link.hoverText}
+                  </span>
+                )}
               </Link>
             ))}
           </div>
