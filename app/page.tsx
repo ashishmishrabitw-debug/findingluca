@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
+import { GlowyWavesBackdrop } from "@/components/ui/glowy-waves-backdrop";
 import NewsCarousel from "@/components/NewsCarousel";
 import { getAllPosts } from "@/lib/posts";
 
@@ -50,10 +51,9 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00e5ff] opacity-[0.04] blur-3xl" />
         </div>
 
-        <div className="relative mb-10 flex w-full max-w-4xl items-center justify-center">
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/45 to-transparent" />
-          <div className="absolute inset-x-8 top-1/2 h-28 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent blur-2xl" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,229,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,82,82,0.12)_1px,transparent_1px)] bg-[size:72px_72px] opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]" />
+        <div className="relative mb-10 flex min-h-[340px] w-full max-w-4xl items-center justify-center overflow-hidden md:min-h-[460px]">
+          <GlowyWavesBackdrop />
+          <div className="absolute inset-x-8 top-1/2 h-32 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent blur-3xl" />
           <Image
             src="/whpc-hero-logo.png"
             alt="White Heart's Placebo Club"
