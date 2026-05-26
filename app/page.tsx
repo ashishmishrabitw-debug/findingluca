@@ -67,7 +67,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 px-6">
           <Link
             href="/constitution"
-            className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-[#00e5ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00e5ff] active:bg-[#00b8cc] transition-colors text-sm"
+            className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-[#00e5ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00e5ff] active:bg-[#00b8cc] transition-colors duration-300 ease-out text-sm"
           >
             Constitution →
           </Link>
