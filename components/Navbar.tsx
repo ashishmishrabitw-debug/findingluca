@@ -8,6 +8,7 @@ import SearchModal from "@/components/SearchModal"
 import type { Post } from "@/lib/posts"
 
 const links = [
+  { href: "/constitution", label: "Constitution" },
   { href: "/frontiers", label: "Frontiers" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },

@@ -82,10 +82,10 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href="/frontiers"
+            href="/constitution"
             className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] transition-colors text-sm"
           >
-            Our Frontiers →
+            Constitution →
           </Link>
           <Link
             href="/contact"
