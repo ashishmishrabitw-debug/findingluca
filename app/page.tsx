@@ -2,38 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { TextScramble } from "@/components/ui/text-scramble";
 import NewsCarousel from "@/components/NewsCarousel";
+import FrontiersSlider from "@/components/FrontiersSlider";
+import { frontierAreas } from "@/lib/frontiers";
 import { getAllPosts } from "@/lib/posts";
-
-const pillarsWithImages = [
-  {
-    icon: "◈",
-    title: "Robotics",
-    description: "Surgical robotics, rehabilitation devices, and autonomous systems that extend what clinicians can do and bring precision medicine everywhere.",
-    status: "Active",
-    image: "/robotics.png",
-  },
-  {
-    icon: "◎",
-    title: "Genomics",
-    description: "Reading the genome to understand disease, design tailored therapies, and bring precision medicine to every individual.",
-    status: "Active",
-    image: "/logo.png",
-  },
-  {
-    icon: "◉",
-    title: "Nutrition Medicine",
-    description: "Exploring diet, micronutrients, and the gut microbiome as powerful levers in preventing and treating disease.",
-    status: "Active",
-    image: "/nutrition-medicine.png",
-  },
-  {
-    icon: "◇",
-    title: "Prosthetics",
-    description: "Building human-centered bionic limbs and assistive technologies that restore movement, touch, independence, and dignity.",
-    status: "Active",
-    image: "/prosthetics.png",
-  },
-];
 
 
 export default function Home() {
@@ -80,56 +51,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Frontiers pillars with images */}
+      {/* Frontiers slider */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
           Frontiers
         </p>
-        <h2 className="text-3xl md:text-4xl font-bold mb-16 max-w-xl">
-          Four pillars driving our work
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 max-w-xl">
+          Long-term focus areas
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillarsWithImages.map((pillar) => (
-            <Link
-              key={pillar.title}
-              href="/frontiers"
-              className="group relative h-full rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#111] hover:border-[#00e5ff]/30 transition-colors flex flex-col"
-            >
-              {/* Background image */}
-              <div className="relative aspect-square w-full overflow-hidden bg-[#0a0a0a]">
-                <Image
-                  src={pillar.image}
-                  alt={pillar.title}
-                  fill
-                  className="object-cover object-center brightness-[0.55] group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/45 to-[#111]/95" />
-              </div>
-              {/* Text */}
-              <div className="bg-[#111] p-5 flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <h3 className="font-semibold text-lg">{pillar.title}</h3>
-                  <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-[#00e5ff]/10 text-[#00e5ff]">
-                    {pillar.status}
-                  </span>
-                </div>
-                <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-10">
-          <Link
-            href="/frontiers"
-            className="text-sm text-[#a0a0a0] hover:text-[#00e5ff] transition-colors"
-          >
-            See all frontiers →
-          </Link>
-        </div>
+        <FrontiersSlider areas={frontierAreas} />
       </section>
 
       {/* Full-width photo break */}
