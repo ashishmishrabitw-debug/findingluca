@@ -46,11 +46,6 @@ export default function Home() {
 
       {/* Lab identity section */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="absolute inset-x-0 top-[calc(50%+74px)] h-px bg-gradient-to-r from-transparent via-[#d61f2a]/20 to-transparent" />
-        </div>
-
         <div className="px-6">
           <TextScramble text="Search and Research Laboratory" className="text-[#d61f2a] mb-6" />
         </div>
@@ -72,7 +67,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 px-6">
           <Link
             href="/constitution"
-            className="px-8 py-3.5 bg-[#00e5ff] text-black font-semibold rounded-full hover:bg-[#00b8cc] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00e5ff] active:bg-[#009bad] transition-colors text-sm"
+            className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-[#00e5ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00e5ff] active:bg-[#00b8cc] transition-colors text-sm"
           >
             Constitution →
           </Link>

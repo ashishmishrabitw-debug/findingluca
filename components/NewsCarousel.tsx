@@ -123,20 +123,27 @@ export default function NewsCarousel({ posts }: Props) {
         {/* Dots + counter */}
         {posts.length > 1 && (
           <div className="absolute bottom-12 left-6 right-6 flex items-center justify-between">
-            <div className="flex gap-3">
+            <div className="flex items-center gap-2">
               {posts.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-current={i === current ? "true" : undefined}
                   onClick={() => {
                     setVisible(false)
                     setTimeout(() => { setCurrent(i); setVisible(true) }, 500)
                   }}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === current
-                      ? "w-8 h-1.5 bg-[#00e5ff]"
-                      : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
+                  className="group grid h-10 w-10 place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00e5ff]"
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      i === current
+                        ? "h-2 w-8 bg-[#00e5ff]"
+                        : "h-2 w-2 bg-white/35 group-hover:bg-white/70"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
             <span className="text-xs font-mono text-white/30">
