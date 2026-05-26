@@ -204,12 +204,9 @@ function DialogContainer({ children, className }: DialogContainerProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      window.scrollTo(0, 0);
-    }
     setMounted(true);
     return () => setMounted(false);
-  }, [isOpen]);
+  }, []);
 
   if (!mounted) return null;
   return (
