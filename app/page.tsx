@@ -73,7 +73,7 @@ export default function Home() {
 
         <h2 className="px-6 text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 max-w-4xl">
           Building the{" "}
-          <span className="text-[#d61f2a]">Future</span>
+          <span className="text-[#00e5ff]">Future</span>
           <br />
           of Medicine
         </h2>
