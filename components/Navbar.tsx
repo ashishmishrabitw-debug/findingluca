@@ -138,6 +138,15 @@ export default function Navbar({ posts }: Props) {
         )}
       </nav>
 
+      {menuOpen && (
+        <button
+          type="button"
+          className="fixed inset-x-0 bottom-0 top-16 z-40 bg-transparent md:hidden"
+          aria-label="Close menu"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
       <SearchModal
         posts={posts}
         open={searchOpen}
