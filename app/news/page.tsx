@@ -16,7 +16,7 @@ export default function NewsPage() {
         </h1>
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-16">
           Announcements, breakthroughs, and what&apos;s happening at the
-          frontier of medicine. Curated by Finding Luca.
+          frontier of medicine. Curated by WHPC.
         </p>
 
         {posts.length === 0 ? (

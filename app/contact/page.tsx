@@ -38,7 +38,7 @@ export default function ContactPage() {
             <p className="text-[#a0a0a0] text-sm leading-relaxed mb-6">
               We&apos;re always open to bringing on curious, driven people.
               Tell us what you&apos;re working on, what you&apos;re excited
-              about, and why you want to be part of Finding Luca.
+              about, and why you want to be part of WHPC.
             </p>
             <a
               href="mailto:join@findingluca.com"

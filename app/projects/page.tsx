@@ -15,7 +15,7 @@ export default function ProjectsPage() {
           What We&apos;re Working On
         </h1>
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-16">
-          Active research projects at Finding Luca S&amp;RL. These are the
+          Active research projects at WHPC. These are the
           specific problems we are working on right now — not long-term
           directions, but hands-on investigations.
         </p>

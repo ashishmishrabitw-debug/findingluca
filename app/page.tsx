@@ -30,7 +30,7 @@ export default function Home() {
 
         <p className="px-6 text-[#a0a0a0] text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
           We believe medicine is one of the most important frontiers of our
-          time. Finding Luca is a research lab dedicated to exploring the
+          time. WHPC is a research lab dedicated to exploring the
           questions that matter most — from how we detect disease, to how we
           heal.
         </p>
@@ -61,7 +61,7 @@ export default function Home() {
             Join our Community
           </h2>
           <p className="text-[#a0a0a0] mb-8 max-w-lg mx-auto">
-            We&apos;re building a growing community of researchers, scientists, and curious minds. Join our Discord to collaborate, share ideas, and stay connected with what&apos;s happening at Finding Luca.
+            We&apos;re building a growing community of researchers, scientists, and curious minds. Join our Discord to collaborate, share ideas, and stay connected with what&apos;s happening at WHPC.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -113,7 +113,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#0a0a0a]/60" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            Finding Luca S&amp;RL
+            WHPC S&amp;RL
           </p>
           <h2 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">
             Science done with curiosity and urgency

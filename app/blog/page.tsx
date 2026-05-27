@@ -15,7 +15,7 @@ export default function BlogPage() {
           From the Lab
         </h1>
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-16">
-          Essays, ideas, and thinking from Finding Luca. We write about
+          Essays, ideas, and thinking from WHPC. We write about
           science, medicine, and what it means to pursue hard problems.
         </p>
 
