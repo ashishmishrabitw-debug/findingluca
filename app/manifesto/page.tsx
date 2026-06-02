@@ -17,13 +17,13 @@ const principles = [
   },
 ];
 
-export default function ConstitutionPage() {
+export default function ManifestoPage() {
   return (
     <div className="pt-16">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <div className="mb-20">
           <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            Constitution
+            Manifesto
           </p>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
             The principles behind WHPC
@@ -31,7 +31,7 @@ export default function ConstitutionPage() {
           <p className="text-[#a0a0a0] text-xl max-w-3xl leading-relaxed">
             White Heart&apos;s Placebo Club exists to search, research, and
             build toward a future where disease has fewer places to hide. This
-            constitution is the working promise behind that effort.
+            manifesto is the working promise behind that effort.
           </p>
         </div>
 

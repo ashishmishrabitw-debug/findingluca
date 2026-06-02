@@ -8,7 +8,7 @@ import SearchModal from "@/components/SearchModal"
 import type { Post } from "@/lib/posts"
 
 const links = [
-  { href: "/constitution", label: "Constitution", hoverText: "core vision" },
+  { href: "/manifesto", label: "Manifesto", hoverText: "core vision" },
   { href: "/frontiers", label: "Frontiers", hoverText: "long term targets" },
   { href: "/projects", label: "Projects", hoverText: "short term actions" },
   { href: "/blog", label: "Blog", hoverText: "essays, articles, philosophy" },
