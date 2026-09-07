@@ -4,7 +4,8 @@ date: "2026-09-07"
 excerpt: "A district-level study of tobacco use in Nuh, Haryana — who uses what form, why cessation attempts fail, and what the existing control machinery is actually reaching."
 tag: "Project"
 status: "Active"
-image: "https://images.unsplash.com/photo-1649779117064-107e63b88758?w=1920&q=80"
+image: "https://images.unsplash.com/photo-1649779117064-107e63b88758?w=1920&h=1440&fit=crop&q=80"
+imagePosition: "60% 4%"
 ---
 
 Nuh is one of the most under-studied districts in northern India on almost every health indicator, and tobacco is no exception. National surveys report state-level numbers for Haryana, but a state average tells you very little about a district whose demography, literacy profile, and health infrastructure look nothing like the state it sits in.

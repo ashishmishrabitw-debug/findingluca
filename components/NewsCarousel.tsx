@@ -55,6 +55,7 @@ export default function NewsCarousel({ posts }: Props) {
           alt=""
           fill
           className="object-cover"
+          style={{ objectPosition: post.imagePosition ?? "center" }}
           priority
         />
         {/* Dark overlay so text stays readable */}
