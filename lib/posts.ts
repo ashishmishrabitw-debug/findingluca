@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export type ReviewStatus = "not-peer-reviewed" | "preprint" | "peer-reviewed";
+
 export type Post = {
   slug: string;
   title: string;
@@ -12,7 +14,35 @@ export type Post = {
   type: "blog" | "news" | "projects";
   image?: string;
   imagePosition?: string;
+  /** Editorial status of this item. Defaults to "not-peer-reviewed". */
+  reviewStatus: ReviewStatus;
+  authors: string[];
+  doi?: string;
+  /** Canonical preprint record, e.g. a medRxiv URL. */
+  preprintUrl?: string;
+  /** Journal name, once a peer-reviewed version exists. */
+  publishedIn?: string;
+  publishedUrl?: string;
 };
+
+const REVIEW_STATUSES: ReviewStatus[] = [
+  "not-peer-reviewed",
+  "preprint",
+  "peer-reviewed",
+];
+
+function parseReviewStatus(value: unknown): ReviewStatus {
+  return typeof value === "string" &&
+    (REVIEW_STATUSES as string[]).includes(value)
+    ? (value as ReviewStatus)
+    : "not-peer-reviewed";
+}
+
+function parseAuthors(value: unknown): string[] {
+  if (Array.isArray(value)) return value.map(String);
+  if (typeof value === "string" && value.trim() !== "") return [value];
+  return ["WHPC"];
+}
 
 function getPostsFromDir(dir: string, type: "blog" | "news" | "projects"): Post[] {
   const fullDir = path.join(process.cwd(), dir);
@@ -35,6 +65,12 @@ function getPostsFromDir(dir: string, type: "blog" | "news" | "projects"): Post[
         type,
         image: data.image,
         imagePosition: data.imagePosition,
+        reviewStatus: parseReviewStatus(data.reviewStatus),
+        authors: parseAuthors(data.authors),
+        doi: data.doi,
+        preprintUrl: data.preprintUrl,
+        publishedIn: data.publishedIn,
+        publishedUrl: data.publishedUrl,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));

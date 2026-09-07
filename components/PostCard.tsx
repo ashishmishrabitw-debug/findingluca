@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/lib/posts";
+import ReviewStatusBadge from "./ReviewStatusBadge";
 
 type Props = {
   post: Post;
@@ -22,6 +23,9 @@ export default function PostCard({ post, href }: Props) {
         {post.title}
       </h3>
       <p className="text-[#a0a0a0] text-sm leading-relaxed">{post.excerpt}</p>
+      <div className="mt-5">
+        <ReviewStatusBadge status={post.reviewStatus} small />
+      </div>
       <p className="text-[#00e5ff]/60 text-sm mt-6 group-hover:text-[#00e5ff] transition-colors">
         Read more →
       </p>

@@ -51,6 +51,9 @@ export default function Footer() {
           <Link href="/news" className="hover:text-white transition-colors">
             News
           </Link>
+          <Link href="/publishing" className="hover:text-white transition-colors">
+            How We Publish
+          </Link>
           <Link href="/contact" className="hover:text-white transition-colors">
             Contact
           </Link>

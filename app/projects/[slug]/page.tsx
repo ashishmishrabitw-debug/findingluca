@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import type { Metadata } from "next";
+import ReviewStatusBadge from "@/components/ReviewStatusBadge";
+import CitationBlock from "@/components/CitationBlock";
+import { postMetadata } from "@/lib/citationMeta";
 
 export async function generateStaticParams() {
   const projects = getProjectPosts();
@@ -12,6 +16,13 @@ export async function generateStaticParams() {
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { slug } = await props.params;
+  const post = getPostBySlug("projects", slug);
+  if (!post) return {};
+  return postMetadata(post);
+}
 
 export default async function ProjectPage(props: Props) {
   const { slug } = await props.params;
@@ -37,6 +48,7 @@ export default async function ProjectPage(props: Props) {
           </span>
           <span className="text-[#333]">·</span>
           <span className="text-xs text-[#555]">{post.date}</span>
+          <ReviewStatusBadge status={post.reviewStatus} small />
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
@@ -57,6 +69,8 @@ export default async function ProjectPage(props: Props) {
             prose-hr:border-[#1e1e1e]"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        <CitationBlock post={post} />
 
         <div className="mt-16 pt-12 border-t border-[#1e1e1e] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <Link
