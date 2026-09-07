@@ -5,6 +5,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import SearchModal from "@/components/SearchModal"
+import MorseMode from "@/components/morse/MorseMode"
 import type { Post } from "@/lib/posts"
 
 const links = [
@@ -27,7 +28,12 @@ export default function Navbar({ posts }: Props) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#1e1e1e] bg-[#0a0a0a]/90 backdrop-blur-md">
+      {/* data-morse-skip: the top bar stays legible in morse mode so the
+          site remains navigable and the toggle stays reachable. */}
+      <nav
+        data-morse-skip
+        className="fixed top-0 left-0 right-0 z-50 border-b border-[#1e1e1e] bg-[#0a0a0a]/90 backdrop-blur-md"
+      >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             href="/"
@@ -96,10 +102,13 @@ export default function Navbar({ posts }: Props) {
                 />
               </svg>
             </button>
+
+            <MorseMode />
           </div>
 
           {/* Mobile: search + hamburger */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-3">
+            <MorseMode />
             <button
               onClick={() => setSearchOpen(true)}
               className="text-[#a0a0a0] hover:text-white transition-colors"

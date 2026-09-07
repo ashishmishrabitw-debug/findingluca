@@ -1,0 +1,57 @@
+/*
+ * Neon styling for morse mode. Every rule is scoped under
+ * [data-morse="on"], so with the mode off this file contributes nothing.
+ * Part of the detachable morse-mode feature — see ./README.md.
+ */
+
+[data-morse="on"] {
+  --morse: #00e5ff;
+}
+
+/* The toggle itself, and anything marked data-morse-skip, stays readable. */
+[data-morse="on"]
+  :is(h1, h2, h3, h4, h5, h6, p, li, a, span, dt, dd, time, small,
+      strong, em, blockquote, figcaption, label, td, th):not([data-morse-skip]):not([data-morse-skip] *) {
+  color: var(--morse) !important;
+  text-shadow:
+    0 0 4px rgba(0, 229, 255, 0.9),
+    0 0 12px rgba(0, 229, 255, 0.5),
+    0 0 30px rgba(0, 229, 255, 0.25);
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Morse runs about five times longer than plain text, so headings come
+   down in size to stop them swallowing the viewport. */
+[data-morse="on"] h1:not([data-morse-skip] *) {
+  font-size: clamp(1.1rem, 3.4vw, 2rem) !important;
+  line-height: 1.5 !important;
+}
+
+[data-morse="on"] h2:not([data-morse-skip] *),
+[data-morse="on"] h3:not([data-morse-skip] *) {
+  font-size: clamp(1rem, 2.2vw, 1.35rem) !important;
+  line-height: 1.5 !important;
+}
+
+[data-morse="on"] p:not([data-morse-skip] *),
+[data-morse="on"] li:not([data-morse-skip] *) {
+  font-size: 0.8rem !important;
+  line-height: 1.9 !important;
+}
+
+@keyframes morse-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.86; }
+}
+
+[data-morse="on"] main {
+  animation: morse-flicker 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-morse="on"] main {
+    animation: none;
+  }
+}
