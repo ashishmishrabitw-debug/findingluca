@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import SearchModal from "@/components/SearchModal"
 import MorseMode from "@/components/morse/MorseMode"
+import MorseWordmark from "@/components/morse/MorseWordmark"
 import type { Post } from "@/lib/posts"
 
 const links = [
@@ -40,12 +41,14 @@ export default function Navbar({ posts }: Props) {
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Image
+              data-morse-logo
               src="/whpc-logo.png"
               alt="White Heart's Placebo Club"
               width={227}
               height={48}
               className="object-contain"
             />
+            <MorseWordmark />
           </Link>
 
           {/* Desktop links */}

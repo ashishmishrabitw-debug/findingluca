@@ -55,3 +55,22 @@
     animation: none;
   }
 }
+
+/* The logo is a single PNG with the wordmark baked in, so the text engine
+   cannot reach it. In morse mode it is swapped for the heart-only asset
+   plus a morse wordmark. The heart itself is untouched. */
+[data-morse-wordmark] {
+  display: none;
+}
+
+[data-morse="on"] [data-morse-logo] {
+  display: none;
+}
+
+[data-morse="on"] [data-morse-wordmark] {
+  display: flex;
+  color: var(--morse);
+  text-shadow:
+    0 0 4px rgba(0, 229, 255, 0.9),
+    0 0 12px rgba(0, 229, 255, 0.5);
+}
