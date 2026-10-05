@@ -10,7 +10,7 @@ export default function Footer() {
         <div>
           <p className="font-bold text-white">WHPC</p>
           <p className="text-[#a0a0a0] text-sm mt-1">
-            Building the Future of Medicine
+            Building the Future of Medicine · test 6 Oct
           </p>
           <div className="flex items-center gap-3 mt-3">
             <a
