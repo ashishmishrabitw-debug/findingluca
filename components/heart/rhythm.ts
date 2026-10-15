@@ -1,7 +1,6 @@
 /**
  * The site's heart rhythm. One shared clock that decides when the heart
- * beats, so the navbar heart, the ECG line and the stethoscope sound all
- * stay in step. Client-only.
+ * beats, so the navbar heart and the screen effects stay in step. Client-only.
  *
  * The rate is in beats per minute and moves between:
  * - resting: one beat every 7 s by day, every 10 s at night

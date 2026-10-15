@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import SearchModal from "@/components/SearchModal"
 import BeatingHeart from "@/components/heart/BeatingHeart"
-import Ecg from "@/components/heart/Ecg"
 import HeartEffects from "@/components/heart/HeartEffects"
 import MorseMode from "@/components/morse/MorseMode"
 import MorseWordmark from "@/components/morse/MorseWordmark"
@@ -187,7 +186,6 @@ export default function Navbar({ posts }: Props) {
             </a>
           </div>
         )}
-        <Ecg />
       </nav>
 
       <HeartEffects />
