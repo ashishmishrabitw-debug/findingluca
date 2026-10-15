@@ -4,39 +4,58 @@ import { useEffect, useRef } from "react"
 import { onBeat, startRhythm } from "./rhythm"
 import { useReducedMotion } from "./useReducedMotion"
 
-/** Seconds for the trace to sweep once across the bar. */
-const SWEEP_SECONDS = 4
-/** Width of the blank gap ahead of the sweep, in CSS pixels. */
-const GAP = 14
+/** How fast the trace moves left, in CSS pixels a second. */
+const SPEED = 200
 
 /**
- * One heartbeat on the trace, for u from 0 to 1 across its length:
- * a small P wave, the sharp QRS spike, then a T wave. Returns height as a
- * fraction of the spike.
+ * The trace shows the signal this many seconds late. Two reasons: the P wave
+ * starts about 0.2 s before the R spike, so a beat has to be known before
+ * its P wave can be drawn; and in a real heart the electrical spike comes
+ * first and the squeeze follows, so the R wave lands as the navbar heart
+ * reaches its first swell.
  */
-function waveform(u: number) {
-  const bump = (from: number, to: number, height: number) =>
-    u >= from && u <= to
-      ? height * Math.sin((Math.PI * (u - from)) / (to - from))
-      : 0
-  const line = (from: number, to: number, a: number, b: number) =>
-    u >= from && u <= to ? a + ((b - a) * (u - from)) / (to - from) : null
+const DELAY = 0.22
 
-  if (u < 0 || u > 1) return 0
-  return (
-    bump(0, 0.12, 0.12) +
-    (line(0.2, 0.24, 0, -0.12) ??
-      line(0.24, 0.3, -0.12, 1) ??
-      line(0.3, 0.36, 1, -0.28) ??
-      line(0.36, 0.42, -0.28, 0) ??
-      0) +
-    bump(0.52, 0.78, 0.24)
-  )
+/** Corrected QT interval (Bazett), seconds. 0.40 s is a typical normal. */
+const QTC = 0.4
+
+type Wave = { at: number; height: number; rise: number; fall: number }
+
+/**
+ * One lead II heartbeat, as a sum of smooth bumps (the approach of
+ * McSharry et al., 2003). Times are seconds from the R peak, heights are
+ * relative to R. At 60 a minute this gives:
+ * - P wave: 0.1 s wide, about 0.15 of R, ending in a flat PR segment
+ *   (PR interval about 0.16 s)
+ * - QRS: about 0.09 s, a small Q dip, tall R, short S below the line
+ * - ST segment flat, then an asymmetric T wave (slow rise, quicker fall)
+ *   ending about 0.4 s after the QRS began
+ * Faster rates shorten the QT by √RR (Bazett), so at speed the T wave
+ * crowds towards the next P, as it does on a real monitor.
+ */
+function beatWaves(rr: number): Wave[] {
+  const qtScale = Math.sqrt(rr)
+  const prScale = 0.85 + 0.15 * Math.min(1, rr)
+  const t = (QTC * qtScale) / 0.4
+  return [
+    { at: -0.165 * prScale, height: 0.15, rise: 0.024, fall: 0.024 },
+    { at: -0.026, height: -0.12, rise: 0.008, fall: 0.007 },
+    { at: 0, height: 1, rise: 0.0095, fall: 0.0105 },
+    { at: 0.026, height: -0.24, rise: 0.008, fall: 0.011 },
+    { at: 0.27 * t, height: 0.3, rise: 0.06 * t, fall: 0.034 * t },
+  ]
+}
+
+function waveAt(dt: number, w: Wave) {
+  const width = dt < w.at ? w.rise : w.fall
+  const z = (dt - w.at) / width
+  return z * z > 40 ? 0 : w.height * Math.exp(-0.5 * z * z)
 }
 
 /**
- * A thin cyan ECG trace along the bottom of the top bar. It sweeps across
- * like a bedside monitor and draws a heartbeat each time the heart beats.
+ * A thin cyan ECG trace along the bottom of the top bar. It scrolls
+ * continuously from right to left, and each heartbeat enters from the
+ * right edge.
  */
 export default function Ecg() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -47,64 +66,64 @@ export default function Ecg() {
     const ctx = canvas?.getContext("2d")
     if (!canvas || !ctx || reduced) return
 
-    let dpr = 1
     let width = 0
     let height = 0
-    let x = 0
-    let prevY: number | null = null
-
     const resize = () => {
-      dpr = window.devicePixelRatio || 1
+      const dpr = window.devicePixelRatio || 1
       width = canvas.clientWidth
       height = canvas.clientHeight
       canvas.width = Math.round(width * dpr)
       canvas.height = Math.round(height * dpr)
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      ctx.lineWidth = 1.2
       ctx.lineJoin = "round"
-      ctx.strokeStyle = "rgb(0 229 255 / 0.85)"
-      ctx.shadowColor = "rgb(0 229 255 / 0.9)"
-      ctx.shadowBlur = 4
-      x = 0
-      prevY = null
+      ctx.lineCap = "round"
     }
     resize()
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
 
-    let beatAt = -Infinity
-    let beatLength = 0.36
+    // Recent beats: when the R peak falls (seconds) and that beat's waves.
+    let beats: { r: number; waves: Wave[] }[] = []
     const stopRhythm = startRhythm()
     const offBeat = onBeat(({ interval }) => {
-      beatAt = performance.now()
-      beatLength = Math.min(0.36, interval * 0.75)
+      const rr = Math.min(1.2, Math.max(0.3, interval))
+      beats.push({ r: performance.now() / 1000, waves: beatWaves(rr) })
     })
 
-    let last = performance.now()
+    const signal = (time: number) => {
+      let v = 0
+      for (const beat of beats) {
+        const dt = time - beat.r
+        if (dt < -0.3 || dt > 0.8) continue
+        for (const w of beat.waves) v += waveAt(dt, w)
+      }
+      return v
+    }
+
     let frame = 0
-    const draw = (now: number) => {
-      const dt = Math.min((now - last) / 1000, 0.1)
-      last = now
+    const draw = () => {
+      const now = performance.now() / 1000 - DELAY
+      const span = width / SPEED
+      beats = beats.filter((b) => b.r > now - span - 1)
+
+      ctx.clearRect(0, 0, width, height)
       if (width > 0) {
         const baseline = height * 0.72
-        const spike = height * 0.62
-        const u = (now - beatAt) / 1000 / beatLength
-        const y = baseline - spike * waveform(u)
-        let nx = x + (width / SWEEP_SECONDS) * dt
-
-        if (nx > width) {
-          nx = 0
-          prevY = null
+        const scale = height * 0.6
+        ctx.beginPath()
+        for (let x = 0; x <= width; x += 0.5) {
+          const y = baseline - scale * signal(now - (width - x) / SPEED)
+          if (x === 0) ctx.moveTo(x, y)
+          else ctx.lineTo(x, y)
         }
-        ctx.clearRect(nx, 0, GAP, height)
-        if (prevY !== null && nx > x) {
-          ctx.beginPath()
-          ctx.moveTo(x, prevY)
-          ctx.lineTo(nx, y)
-          ctx.stroke()
-        }
-        x = nx
-        prevY = y
+        // A wide faint stroke under a thin bright one reads as phosphor
+        // glow, and is much cheaper than a canvas shadow every frame.
+        ctx.strokeStyle = "rgb(0 229 255 / 0.22)"
+        ctx.lineWidth = 3
+        ctx.stroke()
+        ctx.strokeStyle = "rgb(0 229 255 / 0.9)"
+        ctx.lineWidth = 1.1
+        ctx.stroke()
       }
       frame = requestAnimationFrame(draw)
     }
@@ -124,7 +143,7 @@ export default function Ecg() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none absolute inset-x-0 bottom-0 h-4 w-full opacity-70"
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-5 w-full opacity-70"
     />
   )
 }
