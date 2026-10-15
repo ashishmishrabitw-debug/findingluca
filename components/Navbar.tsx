@@ -40,14 +40,26 @@ export default function Navbar({ posts }: Props) {
             href="/"
             className="flex items-center hover:opacity-80 transition-opacity"
           >
-            <Image
-              data-morse-logo
-              src="/whpc-logo.png"
-              alt="White Heart's Placebo Club"
-              width={227}
-              height={48}
-              className="object-contain"
-            />
+            {/* The logo is drawn twice from the same image: once clipped to
+                the words, once clipped to the heart, so the heart alone can
+                beat. At rest the two halves line up exactly. */}
+            <span data-morse-logo className="relative inline-block">
+              <Image
+                src="/whpc-logo.png"
+                alt="White Heart's Placebo Club"
+                width={227}
+                height={48}
+                className="object-contain [clip-path:inset(0_0_0_15.2%)]"
+              />
+              <Image
+                src="/whpc-logo.png"
+                alt=""
+                aria-hidden
+                width={227}
+                height={48}
+                className="whpc-heartbeat absolute inset-0 object-contain [clip-path:inset(0_84.8%_0_0)]"
+              />
+            </span>
             <MorseWordmark />
           </Link>
 

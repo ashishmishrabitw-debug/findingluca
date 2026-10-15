@@ -45,3 +45,34 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #00e5ff55;
 }
+
+/* Navbar heart: a quiet lub-dub every few seconds. Origin is the centre of
+   the heart within whpc-logo.png (x 31.5px, y 44.5px of 454 x 96). */
+.whpc-heartbeat {
+  transform-origin: 6.94% 46.4%;
+  animation: whpc-heartbeat 7s ease-in-out 2s infinite;
+}
+
+@keyframes whpc-heartbeat {
+  0%, 13%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgb(214 31 42 / 0));
+  }
+  3% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 5px rgb(214 31 42 / 0.45));
+  }
+  6% {
+    transform: scale(1);
+  }
+  9% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 4px rgb(214 31 42 / 0.3));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whpc-heartbeat {
+    animation: none;
+  }
+}

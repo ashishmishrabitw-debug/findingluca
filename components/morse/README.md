@@ -18,8 +18,8 @@ Everything lives in this folder:
 Two imports and three elements in `components/Navbar.tsx`: `<MorseMode />`
 in the desktop and mobile clusters, and `<MorseWordmark />` beside the logo.
 The `<nav>` carries `data-morse-skip` so the top bar stays legible and the
-toggle stays reachable, and the logo `<Image>` carries `data-morse-logo` so
-it can be swapped out.
+toggle stays reachable, and the logo wrapper (the two clipped `<Image>`s that
+let the heart beat) carries `data-morse-logo` so it can be swapped out.
 
 Nothing else in the codebase references the feature. No page, layout, or
 content file was modified, and no field was added to the `Post` type.
