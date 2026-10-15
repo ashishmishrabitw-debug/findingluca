@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getAllPosts } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
@@ -29,10 +30,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getAllPosts();
+
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white">
-        <Navbar />
+        <Navbar posts={posts} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
