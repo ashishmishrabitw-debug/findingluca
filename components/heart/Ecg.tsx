@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react"
 import { onBeat, startRhythm } from "./rhythm"
 import { useReducedMotion } from "./useReducedMotion"
 
-/** How fast the trace moves left, in CSS pixels a second. */
-const SPEED = 200
+/** Seconds for the pen to sweep once across the bar. */
+const SWEEP_SECONDS = 4
 
 /**
  * The trace shows the signal this many seconds late. Two reasons: the P wave
@@ -53,9 +53,10 @@ function waveAt(dt: number, w: Wave) {
 }
 
 /**
- * A thin cyan ECG trace along the bottom of the top bar. It scrolls
- * continuously from right to left, and each heartbeat enters from the
- * right edge.
+ * A thin cyan ECG trace along the bottom of the top bar. Like a bedside
+ * monitor, an invisible pen sweeps left to right writing the new trace over
+ * the old one, so the line is always unbroken: behind the pen is this
+ * sweep, ahead of it is the last one.
  */
 export default function Ecg() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -68,6 +69,10 @@ export default function Ecg() {
 
     let width = 0
     let height = 0
+    /** The trace, one value per CSS pixel column, as a fraction of R. */
+    let trace = new Float32Array(0)
+    /** Where the pen is, in CSS pixels from the left. */
+    let pen = 0
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
       width = canvas.clientWidth
@@ -77,6 +82,10 @@ export default function Ecg() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       ctx.lineJoin = "round"
       ctx.lineCap = "round"
+      const next = new Float32Array(Math.max(1, Math.ceil(width)))
+      next.set(trace.subarray(0, next.length))
+      trace = next
+      pen = Math.min(pen, width)
     }
     resize()
     const observer = new ResizeObserver(resize)
@@ -101,20 +110,36 @@ export default function Ecg() {
     }
 
     let frame = 0
+    let last = performance.now() / 1000
     const draw = () => {
-      const now = performance.now() / 1000 - DELAY
-      const span = width / SPEED
-      beats = beats.filter((b) => b.r > now - span - 1)
+      const clock = performance.now() / 1000
+      const dt = Math.min(clock - last, 0.1)
+      last = clock
+      const now = clock - DELAY
+      const columns = trace.length
 
-      ctx.clearRect(0, 0, width, height)
       if (width > 0) {
+        const speed = width / SWEEP_SECONDS
+        beats = beats.filter((b) => b.r > now - 2)
+
+        // Write every column the pen passed this frame, each at the moment
+        // the pen crossed it, wrapping back to the left edge.
+        const from = Math.floor(pen)
+        pen += speed * dt
+        const to = Math.floor(pen)
+        for (let c = from + 1; c <= to; c++) {
+          trace[c % columns] = signal(now - (pen - c) / speed)
+        }
+        pen %= columns
+
+        ctx.clearRect(0, 0, width, height)
         const baseline = height * 0.72
         const scale = height * 0.6
         ctx.beginPath()
-        for (let x = 0; x <= width; x += 0.5) {
-          const y = baseline - scale * signal(now - (width - x) / SPEED)
-          if (x === 0) ctx.moveTo(x, y)
-          else ctx.lineTo(x, y)
+        for (let c = 0; c < columns; c++) {
+          const y = baseline - scale * trace[c]
+          if (c === 0) ctx.moveTo(c, y)
+          else ctx.lineTo(c, y)
         }
         // A wide faint stroke under a thin bright one reads as phosphor
         // glow, and is much cheaper than a canvas shadow every frame.
