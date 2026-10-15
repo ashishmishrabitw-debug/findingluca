@@ -103,3 +103,108 @@ body {
     animation: none;
   }
 }
+
+/* ---------- Page-change effects ----------
+   The page area is wrapped in <ViewTransition default="page"> (see
+   components/PageTransition.tsx). The effect is chosen by
+   data-page-transition on <html>. The top bar keeps its own layer above the
+   page so moving content never covers it. */
+::view-transition-group(site-nav),
+::view-transition-group(effect-picker) {
+  z-index: 100;
+}
+
+/* Fade up: the old page dissolves, the new one rises softly into focus. */
+:root[data-page-transition="fade"]::view-transition-old(.page) {
+  animation: 160ms ease-in both pt-fade-out;
+}
+:root[data-page-transition="fade"]::view-transition-new(.page) {
+  animation: 340ms cubic-bezier(0.2, 0.8, 0.2, 1) 110ms both pt-rise-in;
+}
+
+/* Slide: like turning a page. */
+:root[data-page-transition="slide"]::view-transition-old(.page) {
+  animation: 280ms cubic-bezier(0.4, 0, 1, 1) both pt-slide-out;
+}
+:root[data-page-transition="slide"]::view-transition-new(.page) {
+  animation: 380ms cubic-bezier(0, 0, 0.2, 1) 120ms both pt-slide-in;
+}
+
+/* Scan: the new page is drawn in from the top, edged with a cyan glow. */
+:root[data-page-transition="scan"]::view-transition-old(.page) {
+  animation: 500ms ease-in both pt-dim-out;
+}
+:root[data-page-transition="scan"]::view-transition-new(.page) {
+  animation: 560ms cubic-bezier(0.65, 0, 0.35, 1) both pt-scan-in;
+}
+
+/* Heartbeat: the new page arrives with one lub-dub and a cyan flash. */
+:root[data-page-transition="heartbeat"]::view-transition-old(.page) {
+  animation: 150ms ease-in both pt-shrink-out;
+}
+:root[data-page-transition="heartbeat"]::view-transition-new(.page) {
+  animation: 620ms ease-out 100ms both pt-beat-in;
+}
+
+/* Warp: the old page rushes past, the new one pulls into focus. */
+:root[data-page-transition="warp"]::view-transition-old(.page) {
+  animation: 300ms cubic-bezier(0.5, 0, 0.75, 0) both pt-warp-out;
+}
+:root[data-page-transition="warp"]::view-transition-new(.page) {
+  animation: 420ms cubic-bezier(0.16, 1, 0.3, 1) 140ms both pt-warp-in;
+}
+
+/* None: an instant swap. */
+:root[data-page-transition="none"]::view-transition-group(.page),
+:root[data-page-transition="none"]::view-transition-old(.page),
+:root[data-page-transition="none"]::view-transition-new(.page) {
+  animation: none;
+}
+
+@keyframes pt-fade-out {
+  to { opacity: 0; }
+}
+@keyframes pt-rise-in {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes pt-slide-out {
+  to { opacity: 0; transform: translateX(-60px); }
+}
+@keyframes pt-slide-in {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pt-dim-out {
+  to { opacity: 0; filter: brightness(0.4); }
+}
+@keyframes pt-scan-in {
+  0% { clip-path: inset(0 0 100% 0); filter: drop-shadow(0 6px 0 rgb(0 229 255 / 0.9)) drop-shadow(0 0 18px rgb(0 229 255 / 0.6)); }
+  85% { filter: drop-shadow(0 6px 0 rgb(0 229 255 / 0.9)) drop-shadow(0 0 18px rgb(0 229 255 / 0.6)); }
+  100% { clip-path: inset(0); filter: drop-shadow(0 0 0 rgb(0 229 255 / 0)); }
+}
+@keyframes pt-shrink-out {
+  to { opacity: 0; transform: scale(0.97); }
+}
+@keyframes pt-beat-in {
+  0% { opacity: 0; transform: scale(0.95); filter: drop-shadow(0 0 0 rgb(0 229 255 / 0)); }
+  30% { opacity: 1; transform: scale(1.015); filter: drop-shadow(0 0 22px rgb(0 229 255 / 0.35)); }
+  48% { transform: scale(0.995); filter: drop-shadow(0 0 0 rgb(0 229 255 / 0)); }
+  64% { transform: scale(1.008); filter: drop-shadow(0 0 14px rgb(0 229 255 / 0.25)); }
+  100% { opacity: 1; transform: none; filter: drop-shadow(0 0 0 rgb(0 229 255 / 0)); }
+}
+@keyframes pt-warp-out {
+  to { opacity: 0; transform: scale(1.08); filter: blur(10px); }
+}
+@keyframes pt-warp-in {
+  from { opacity: 0; transform: scale(0.9); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

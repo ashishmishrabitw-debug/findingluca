@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageTransition, { DEFAULT_PAGE_TRANSITION } from "@/components/PageTransition";
 import { getAllPosts } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
 
@@ -33,10 +34,16 @@ export default function RootLayout({
   const posts = getAllPosts();
 
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${inter.variable} h-full`}
+      data-page-transition={DEFAULT_PAGE_TRANSITION}
+    >
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white">
         <Navbar posts={posts} />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

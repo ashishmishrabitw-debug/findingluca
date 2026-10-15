@@ -10,6 +10,7 @@ import MorseWordmark from "@/components/morse/MorseWordmark"
 import type { Post } from "@/lib/posts"
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/manifesto", label: "Manifesto", hoverText: "core vision" },
   { href: "/frontiers", label: "Frontiers", hoverText: "long term targets" },
   { href: "/projects", label: "Projects", hoverText: "short term actions" },
@@ -17,6 +18,11 @@ const links = [
   { href: "/news", label: "News", hoverText: "new information" },
   { href: "/contact", label: "Join Us" },
 ]
+
+/** Home is only active on the homepage itself, not on every page under it. */
+function isActive(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href)
+}
 
 type Props = {
   posts: Post[]
@@ -33,6 +39,7 @@ export default function Navbar({ posts }: Props) {
           site remains navigable and the toggle stays reachable. */}
       <nav
         data-morse-skip
+        style={{ viewTransitionName: "site-nav" }}
         className="fixed top-0 left-0 right-0 z-50 border-b border-[#1e1e1e] bg-[#0a0a0a]/90 backdrop-blur-md"
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -70,7 +77,7 @@ export default function Navbar({ posts }: Props) {
                 key={link.href}
                 href={link.href}
                 className={`group relative text-sm transition-colors ${
-                  pathname.startsWith(link.href)
+                  isActive(pathname, link.href)
                     ? "text-[#00e5ff]"
                     : "text-[#a0a0a0] hover:text-white"
                 }`}
@@ -157,7 +164,7 @@ export default function Navbar({ posts }: Props) {
               >
                 <span
                   className={`text-sm ${
-                    pathname.startsWith(link.href)
+                    isActive(pathname, link.href)
                       ? "text-[#00e5ff]"
                       : "text-[#a0a0a0]"
                   }`}
