@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import Link from "next/link";
 import { frontierAreas } from "@/lib/frontiers";
 
@@ -9,9 +10,10 @@ export default function FrontiersPage() {
           <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Frontiers
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Long-Term Focus Areas
-          </h1>
+          <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="Long-Term Focus Areas"
+        />
           <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed">
             These are the scientific horizons we are orienting toward. Not
             everything we work on today — but everything we are building toward.

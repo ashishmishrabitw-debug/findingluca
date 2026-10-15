@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import { getNewsPosts, getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -51,9 +52,10 @@ export default async function NewsPostPage(props: Props) {
           <ReviewStatusBadge status={post.reviewStatus} small />
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
-          {post.title}
-        </h1>
+        <ScrambleTitle
+          className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight"
+          text={post.title}
+        />
 
         <p className="text-[#a0a0a0] text-xl leading-relaxed mb-12 border-b border-[#1e1e1e] pb-12">
           {post.excerpt}

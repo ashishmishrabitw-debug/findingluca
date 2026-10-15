@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 export default function ContactPage() {
   return (
     <div className="pt-16">
@@ -6,9 +7,10 @@ export default function ContactPage() {
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
           Contact
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-          Let&apos;s Talk
-        </h1>
+        <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="Let's Talk"
+        />
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-20">
           Whether you&apos;re a researcher, a student, a collaborator, or just
           deeply curious about the future of medicine — we want to hear from

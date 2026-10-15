@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import type { Metadata } from "next";
 import Link from "next/link";
 import ReviewStatusBadge from "@/components/ReviewStatusBadge";
@@ -15,9 +16,10 @@ export default function PublishingPage() {
         <p className="text-xs text-[#00e5ff] font-medium tracking-[0.3em] uppercase mb-6">
           Publishing
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
-          How We Publish
-        </h1>
+        <ScrambleTitle
+          className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight"
+          text="How We Publish"
+        />
         <p className="text-[#a0a0a0] text-xl leading-relaxed mb-12 border-b border-[#1e1e1e] pb-12">
           WHPC self-publishes its own work. Almost nothing on this site has been
           peer reviewed, and we label every item so you never have to guess.

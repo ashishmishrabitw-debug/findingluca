@@ -5,6 +5,9 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import SearchModal from "@/components/SearchModal"
+import BeatingHeart from "@/components/heart/BeatingHeart"
+import Ecg from "@/components/heart/Ecg"
+import HeartEffects from "@/components/heart/HeartEffects"
 import MorseMode from "@/components/morse/MorseMode"
 import MorseWordmark from "@/components/morse/MorseWordmark"
 import type { Post } from "@/lib/posts"
@@ -58,14 +61,7 @@ export default function Navbar({ posts }: Props) {
                 height={48}
                 className="object-contain [clip-path:inset(0_0_0_15.2%)]"
               />
-              <Image
-                src="/whpc-logo.png"
-                alt=""
-                aria-hidden
-                width={227}
-                height={48}
-                className="whpc-heartbeat absolute inset-0 object-contain [clip-path:inset(0_84.8%_0_0)]"
-              />
+              <BeatingHeart />
             </span>
             <MorseWordmark />
           </Link>
@@ -191,7 +187,10 @@ export default function Navbar({ posts }: Props) {
             </a>
           </div>
         )}
+        <Ecg />
       </nav>
+
+      <HeartEffects />
 
       {menuOpen && (
         <button

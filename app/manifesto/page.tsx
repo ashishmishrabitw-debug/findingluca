@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 const principles = [
   {
     title: "Serve life first",
@@ -25,9 +26,10 @@ export default function ManifestoPage() {
           <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Manifesto
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            The principles behind WHPC
-          </h1>
+          <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="The principles behind WHPC"
+        />
           <p className="text-[#a0a0a0] text-xl max-w-3xl leading-relaxed">
             White Heart&apos;s Placebo Club exists to search, research, and
             build toward a future where disease has fewer places to hide. This

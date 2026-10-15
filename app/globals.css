@@ -46,30 +46,11 @@ body {
   background: #00e5ff55;
 }
 
-/* Navbar heart: a quiet lub-dub with a cyan glow every few seconds. Origin is the centre of
-   the heart within whpc-logo.png (x 31.5px, y 44.5px of 454 x 96). */
+/* Navbar heart. Beats are driven by components/heart/rhythm.ts; this sets
+   where it swells from: the centre of the heart within whpc-logo.png
+   (x 31.5px, y 44.5px of 454 x 96). */
 .whpc-heartbeat {
   transform-origin: 6.94% 46.4%;
-  animation: whpc-heartbeat 7s ease-in-out 2s infinite;
-}
-
-@keyframes whpc-heartbeat {
-  0%, 13%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0 rgb(0 229 255 / 0));
-  }
-  3% {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 5px rgb(0 229 255 / 0.55));
-  }
-  6% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0 rgb(0 229 255 / 0));
-  }
-  9% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 5px rgb(0 229 255 / 0.5));
-  }
 }
 
 /* Loading screen: the same lub-dub, at a resting heart rate (about 70 a
@@ -98,7 +79,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .whpc-heartbeat,
   .whpc-heartbeat-loader {
     animation: none;
   }
@@ -207,4 +187,24 @@ body {
   ::view-transition-new(*) {
     animation: none !important;
   }
+}
+
+/* 404 flatline: a blip runs along the flat line; after the shock the
+   heartbeat trace draws itself in. */
+.flatline-blip {
+  animation: flatline-blip 2.6s linear infinite;
+}
+@keyframes flatline-blip {
+  from { transform: translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  to { transform: translateX(600px); opacity: 0; }
+}
+.flatline-revive {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: flatline-revive 1.2s ease-out forwards;
+}
+@keyframes flatline-revive {
+  to { stroke-dashoffset: 0; }
 }

@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import { getProjectPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Link from "next/link";
@@ -11,9 +12,10 @@ export default function ProjectsPage() {
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
           Projects
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-          What We&apos;re Working On
-        </h1>
+        <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="What We're Working On"
+        />
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-16">
           Active research projects at WHPC. These are the
           specific problems we are working on right now — not long-term

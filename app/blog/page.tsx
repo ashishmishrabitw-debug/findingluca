@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import { getBlogPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Link from "next/link";
@@ -11,9 +12,10 @@ export default function BlogPage() {
         <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
           Blog
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-          From the Lab
-        </h1>
+        <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="From the Lab"
+        />
         <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed mb-16">
           Essays, ideas, and thinking from WHPC. We write about
           science, medicine, and what it means to pursue hard problems.

@@ -1,3 +1,4 @@
+import ScrambleTitle from "@/components/ScrambleTitle";
 import Link from "next/link";
 
 const areas = [
@@ -68,9 +69,10 @@ export default function ResearchPage() {
           <p className="text-[#00e5ff] text-sm font-medium tracking-[0.2em] uppercase mb-4">
             Research
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            What We&apos;re Building
-          </h1>
+          <ScrambleTitle
+          className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          text="What We're Building"
+        />
           <p className="text-[#a0a0a0] text-xl max-w-2xl leading-relaxed">
             Each area below represents a bet on where biology and technology
             converge. We pursue questions that are hard, important, and
