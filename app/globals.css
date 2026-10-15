@@ -46,7 +46,7 @@ body {
   background: #00e5ff55;
 }
 
-/* Navbar heart: a quiet lub-dub every few seconds. Origin is the centre of
+/* Navbar heart: a quiet lub-dub with a cyan glow every few seconds. Origin is the centre of
    the heart within whpc-logo.png (x 31.5px, y 44.5px of 454 x 96). */
 .whpc-heartbeat {
   transform-origin: 6.94% 46.4%;
@@ -56,23 +56,48 @@ body {
 @keyframes whpc-heartbeat {
   0%, 13%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 0 rgb(214 31 42 / 0));
+    filter: drop-shadow(0 0 0 rgb(0 229 255 / 0));
   }
   3% {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 5px rgb(214 31 42 / 0.45));
+    filter: drop-shadow(0 0 5px rgb(0 229 255 / 0.55));
   }
   6% {
     transform: scale(1);
   }
   9% {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 4px rgb(214 31 42 / 0.3));
+    filter: drop-shadow(0 0 4px rgb(0 229 255 / 0.35));
+  }
+}
+
+/* Loading screen: the same lub-dub, at a resting heart rate (about 70 a
+   minute) instead of once every few seconds. */
+.whpc-heartbeat-loader {
+  animation: whpc-heartbeat-loader 0.85s ease-in-out infinite;
+}
+
+@keyframes whpc-heartbeat-loader {
+  0%, 60%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgb(0 229 255 / 0));
+  }
+  14% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 10px rgb(0 229 255 / 0.6));
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 7px rgb(0 229 255 / 0.4));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .whpc-heartbeat {
+  .whpc-heartbeat,
+  .whpc-heartbeat-loader {
     animation: none;
   }
 }
