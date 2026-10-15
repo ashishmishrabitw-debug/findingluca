@@ -8,6 +8,7 @@ import { ViewTransition, useEffect, useState, type ReactNode } from "react"
  * add ?effects to any URL to get a picker for trying the others.
  */
 export const PAGE_TRANSITIONS = [
+  { id: "swipe", label: "Swipe" },
   { id: "fade", label: "Fade up" },
   { id: "slide", label: "Slide" },
   { id: "scan", label: "Scan" },
@@ -16,7 +17,7 @@ export const PAGE_TRANSITIONS = [
   { id: "none", label: "None" },
 ] as const
 
-export const DEFAULT_PAGE_TRANSITION = "fade"
+export const DEFAULT_PAGE_TRANSITION = "swipe"
 
 const STORAGE_KEY = "whpc:page-transition"
 
@@ -26,7 +27,10 @@ export default function PageTransition({ children }: { children: ReactNode }) {
       {/* One wrapper element, so the animation always has exactly one thing
           to name. Without it, the first navigation can briefly hold two
           sibling elements under the same name and the browser cancels it. */}
-      <ViewTransition default="page">
+      {/* Moving to a menu item further left tags the navigation "nav-back"
+          (see Navbar), which adds the "back" class so swipes run the other
+          way. */}
+      <ViewTransition default={{ "nav-back": "page back", default: "page" }}>
         <div>{children}</div>
       </ViewTransition>
       <EffectPicker />

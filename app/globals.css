@@ -94,6 +94,25 @@ body {
   z-index: 100;
 }
 
+/* Swipe: the old page slides off and the new one slides in beside it, fast,
+   like swiping between screens. Leftward through the menu runs it back. */
+:root[data-page-transition="swipe"]::view-transition-group(.page) {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+}
+:root[data-page-transition="swipe"]::view-transition-old(.page) {
+  animation: 280ms cubic-bezier(0.3, 0, 0.2, 1) both pt-swipe-out;
+}
+:root[data-page-transition="swipe"]::view-transition-new(.page) {
+  animation: 280ms cubic-bezier(0.3, 0, 0.2, 1) both pt-swipe-in;
+}
+:root[data-page-transition="swipe"]::view-transition-old(.page.back) {
+  animation-name: pt-swipe-out-back;
+}
+:root[data-page-transition="swipe"]::view-transition-new(.page.back) {
+  animation-name: pt-swipe-in-back;
+}
+
 /* Fade up: the old page dissolves, the new one rises softly into focus. */
 :root[data-page-transition="fade"]::view-transition-old(.page) {
   animation: 160ms ease-in both pt-fade-out;
@@ -141,6 +160,18 @@ body {
   animation: none;
 }
 
+@keyframes pt-swipe-out {
+  to { transform: translateX(-100%); }
+}
+@keyframes pt-swipe-in {
+  from { transform: translateX(100%); }
+}
+@keyframes pt-swipe-out-back {
+  to { transform: translateX(100%); }
+}
+@keyframes pt-swipe-in-back {
+  from { transform: translateX(-100%); }
+}
 @keyframes pt-fade-out {
   to { opacity: 0; }
 }

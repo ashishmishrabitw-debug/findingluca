@@ -26,6 +26,17 @@ function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href)
 }
 
+/**
+ * Direction for the page swipe: going to a menu item to the right of the
+ * current one swipes forward, to the left swipes back.
+ */
+function swipeDirection(pathname: string, href: string) {
+  const here = links.findIndex((l) => isActive(pathname, l.href))
+  const there = links.findIndex((l) => l.href === href)
+  if (here === -1 || there === here) return undefined
+  return [there > here ? "nav-forward" : "nav-back"]
+}
+
 type Props = {
   posts: Post[]
 }
@@ -71,6 +82,7 @@ export default function Navbar({ posts }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
+                transitionTypes={swipeDirection(pathname, link.href)}
                 className={`group relative text-sm transition-colors ${
                   isActive(pathname, link.href)
                     ? "text-[#00e5ff]"
@@ -154,6 +166,7 @@ export default function Navbar({ posts }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
+                transitionTypes={swipeDirection(pathname, link.href)}
                 onClick={() => setMenuOpen(false)}
                 className="block"
               >
